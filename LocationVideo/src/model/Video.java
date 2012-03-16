@@ -65,4 +65,34 @@ public class Video implements Serializable
 		this.vid_notemoyen = note; 
 	}
 	
+	public Date getDateCreation() 
+	{
+		return this.vid_datecre; 
+	}
+	
+	public void setDateCreation(Date dateCre) 
+	{
+		this.vid_datecre = dateCre; 
+	}
+	
+	public String getUserCreation() 
+	{
+		return this.vid_usercre; 
+	}
+	
+	public void setUserCreation(String userCre) 
+	{
+		this.vid_usercre = userCre; 
+	}
+	
+	public int getIdCategorie() 
+	{
+		return this.vid_idcategorie; 
+	}
+	
+	public void setIdCategorie(int idCat) 
+	{
+		this.vid_idcategorie = idCat; 
+	}
+	
 }
