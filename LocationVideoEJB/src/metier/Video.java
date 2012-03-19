@@ -2,10 +2,13 @@ package metier;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 
 @Entity
@@ -17,7 +20,8 @@ public class Video implements Serializable
 	private float vid_notemoyen;
 	private Date vid_datecre;
 	private String vid_usercre;
-	private int vid_idcategorie;
+	private Categorie categorie;
+	private Set<Support> supports;
 
 	public Video()
 	{
@@ -85,14 +89,26 @@ public class Video implements Serializable
 		this.vid_usercre = userCre; 
 	}
 	
-	public int getIdCategorie() 
+	@ManyToOne
+	public Categorie getCategorie()
 	{
-		return this.vid_idcategorie; 
+		return categorie;
 	}
-	
-	public void setIdCategorie(int idCat) 
+
+	public void setCategorie(Categorie categorie) 
 	{
-		this.vid_idcategorie = idCat; 
+		this.categorie = categorie;
+	}
+
+	@ManyToMany
+	public Set<Support> getSupports() 
+	{
+		return supports;
+	}
+
+	public void setSupports(Set<Support> supports)
+	{
+		this.supports = supports;
 	}
 	
 }

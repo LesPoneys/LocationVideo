@@ -2,9 +2,11 @@ package metier;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Utilisateur implements Serializable
 {
 	private int uti_id;
@@ -34,6 +36,11 @@ public class Utilisateur implements Serializable
 	public String getLogin() 
 	{ 
 		return uti_login;
+	}
+	
+	public void setLogin(String login)
+	{
+		this.uti_login = login;
 	}
 
 	public String getMdp() {

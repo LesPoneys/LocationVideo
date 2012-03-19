@@ -5,13 +5,14 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Categorie implements Serializable
 {
 	private int cat_id;
 	private String cat_nom;
-	private int cat_idMere;
+	private Categorie CatMere;
 
 	public Categorie()
 	{
@@ -38,14 +39,15 @@ public class Categorie implements Serializable
 	{
 		this.cat_nom = nom; 
 	}
-	
-	public int getIdCatMere() 
-	{ 
-		return cat_idMere;
-	}
-	
-	public void setIdCatMere(int idCat) 
+
+	@ManyToOne
+	public Categorie getCatMere()
 	{
-		this.cat_idMere = idCat; 
+		return CatMere;
+	}
+
+	public void setCatMere(Categorie catMere)
+	{
+		CatMere = catMere;
 	}
 }
