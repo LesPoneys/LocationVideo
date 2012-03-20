@@ -9,13 +9,13 @@ import javax.persistence.Id;
 @Entity
 public class Utilisateur implements Serializable
 {
-	private int uti_id;
-	private String uti_login;
-	private String uti_mdp;
-	private String uti_nom;
-	private String uti_prenom;
-	private String uti_email;
-	private boolean uti_isAdmin;
+	private int id;
+	private String login;
+	private String mdp;
+	private String nom;
+	private String prenom;
+	private String email;
+	private boolean isAdmin;
 
 	public Utilisateur()
 	{
@@ -25,62 +25,62 @@ public class Utilisateur implements Serializable
 	@Id @GeneratedValue
 	public int getId() 
 	{ 
-		return uti_id;
+		return id;
 	}
 	
 	public void setId(int id) 
 	{
-		this.uti_id= id; 
+		this.id= id; 
 	}
 	
 	public String getLogin() 
 	{ 
-		return uti_login;
+		return login;
 	}
 	
 	public void setLogin(String login)
 	{
-		this.uti_login = login;
+		this.login = login;
 	}
 
 	public String getMdp() {
-		return uti_mdp;
+		return mdp;
 	}
 
-	public void setMdp(String uti_mdp) {
-		this.uti_mdp = uti_mdp;
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 
 	public String getNom() {
-		return uti_nom;
+		return nom;
 	}
 
-	public void setNom(String uti_nom) {
-		this.uti_nom = uti_nom;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public String getPrenom() {
-		return uti_prenom;
+		return prenom;
 	}
 
-	public void setPrenom(String uti_prenom) {
-		this.uti_prenom = uti_prenom;
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
 	}
 
 	public String getEmail() {
-		return uti_email;
+		return email;
 	}
 
-	public void setEmail(String uti_email) {
-		this.uti_email = uti_email;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public boolean getIsAdmin() {
-		return uti_isAdmin;
+		return isAdmin;
 	}
 
-	public void setIsAdmin(boolean uti_isAdmin) {
-		this.uti_isAdmin = uti_isAdmin;
+	public void setIsAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
 	
 }

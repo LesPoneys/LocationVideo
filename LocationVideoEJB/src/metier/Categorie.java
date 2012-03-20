@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Categorie implements Serializable
 {
-	private int cat_id;
-	private String cat_nom;
+	private int id;
+	private String nom;
 	private Categorie CatMere;
 
 	public Categorie()
@@ -22,22 +22,22 @@ public class Categorie implements Serializable
 	@Id @GeneratedValue
 	public int getId() 
 	{ 
-		return cat_id;
+		return id;
 	}
 	
 	public void setId(int id) 
 	{
-		this.cat_id= id; 
+		this.id= id; 
 	}
 	
 	public String getNom() 
 	{ 
-		return cat_nom;
+		return nom;
 	}
 	
 	public void setNom(String nom) 
 	{
-		this.cat_nom = nom; 
+		this.nom = nom; 
 	}
 
 	@ManyToOne

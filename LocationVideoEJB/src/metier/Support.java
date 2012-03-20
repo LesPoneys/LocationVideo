@@ -9,27 +9,27 @@ import javax.persistence.Id;
 @Entity
 public class Support implements Serializable
 {
-	private int sup_id;
-	private String sup_libelle;
+	private int id;
+	private String libelle;
 	
 	@Id @GeneratedValue
 	public int getId() 
 	{
-		return sup_id;
+		return id;
 	}
 	
-	public void setId(int sup_id)
+	public void setId(int id)
 	{
-		this.sup_id = sup_id;
+		this.id = id;
 	}
 	
 	public String getLibelle() 
 	{
-		return sup_libelle;
+		return libelle;
 	}
 	
-	public void setLibelle(String sup_libelle)
+	public void setLibelle(String libelle)
 	{
-		this.sup_libelle = sup_libelle;
+		this.libelle = libelle;
 	}
 }

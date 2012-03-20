@@ -14,12 +14,12 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Video implements Serializable
 {
-	private int vid_id;
-	private String vid_nom;
-	private String vid_description;
-	private float vid_notemoyen;
-	private Date vid_datecre;
-	private String vid_usercre;
+	private int id;
+	private String nom;
+	private String description;
+	private float noteMoyen;
+	private Date dateCreation;
+	private String userCreation;
 	private Categorie categorie;
 	private Set<Support> supports;
 
@@ -31,62 +31,62 @@ public class Video implements Serializable
 	@Id @GeneratedValue
 	public int getId() 
 	{ 
-		return vid_id;
+		return id;
 	}
 	
 	public void setId(int id) 
 	{
-		this.vid_id= id; 
+		this.id= id; 
 	}
 	
 	public String getNom() 
 	{ 
-		return vid_nom;
+		return nom;
 	}
 	
 	public void setNom(String nom) 
 	{
-		this.vid_nom = nom; 
+		this.nom = nom; 
 	}
 	
 	public String getDescription() 
 	{ 
-		return vid_description;
+		return description;
 	}
 	
 	public void setDescription(String desc) 
 	{
-		this.vid_description = desc; 
+		this.description = desc; 
 	}
 	
 	public float getNoteMoyen() 
 	{ 
-		return vid_notemoyen;
+		return noteMoyen;
 	}
 	
 	public void setNoteMoyen(float note) 
 	{
-		this.vid_notemoyen = note; 
+		this.noteMoyen = note; 
 	}
 	
 	public Date getDateCreation() 
 	{
-		return this.vid_datecre; 
+		return this.dateCreation; 
 	}
 	
 	public void setDateCreation(Date dateCre) 
 	{
-		this.vid_datecre = dateCre; 
+		this.dateCreation = dateCre; 
 	}
 	
 	public String getUserCreation() 
 	{
-		return this.vid_usercre; 
+		return this.userCreation; 
 	}
 	
 	public void setUserCreation(String userCre) 
 	{
-		this.vid_usercre = userCre; 
+		this.userCreation = userCre; 
 	}
 	
 	@ManyToOne

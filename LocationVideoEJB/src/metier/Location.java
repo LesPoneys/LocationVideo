@@ -11,41 +11,41 @@ import javax.persistence.OneToOne;
 @Entity
 public class Location implements Serializable
 {
-	private int loc_id;
-	private Date loc_dateloc;
-	private Date loc_dateLimiteRetour;
+	private int id;
+	private Date dateloc;
+	private Date dateLimiteRetour;
 	private Utilisateur utilisateur;
 	private Video video;
 	
 	@Id @GeneratedValue
 	public int getId() 
 	{
-		return loc_id;
+		return id;
 	}
 	
 	public void setId(int loc_id)
 	{
-		this.loc_id = loc_id;
+		this.id = loc_id;
 	}
 
 	public Date getDateLocation() 
 	{
-		return loc_dateloc;
+		return dateloc;
 	}
 
-	public void setDateLocation(Date loc_dateloc) 
+	public void setDateLocation(Date dateloc) 
 	{
-		this.loc_dateloc = loc_dateloc;
+		this.dateloc = dateloc;
 	}
 
 	public Date getDateLimiteRetour() 
 	{
-		return loc_dateLimiteRetour;
+		return dateLimiteRetour;
 	}
 
-	public void setDateLimiteRetour(Date loc_dateLimiteRetour)
+	public void setDateLimiteRetour(Date dateLimiteRetour)
 	{
-		this.loc_dateLimiteRetour = loc_dateLimiteRetour;
+		this.dateLimiteRetour = dateLimiteRetour;
 	}
 
 	@OneToOne

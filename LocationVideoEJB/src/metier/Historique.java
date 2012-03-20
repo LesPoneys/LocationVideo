@@ -11,29 +11,29 @@ import javax.persistence.OneToOne;
 @Entity
 public class Historique implements Serializable
 {
-	private int his_id;
-	private Date his_dateVisu;
+	private int id;
+	private Date dateVisu;
 	private Utilisateur utilisateur;
 	private Video video;
 	
 	@Id @GeneratedValue
 	public int getid() {
-		return his_id;
+		return id;
 	}
 	
-	public void setid(int his_id) 
+	public void setid(int id) 
 	{
-		this.his_id = his_id;
+		this.id = id;
 	}
 	
 	public Date getdateVisu() 
 	{
-		return his_dateVisu;
+		return dateVisu;
 	}
 	
-	public void setdateVisu(Date his_dateVisu)
+	public void setdateVisu(Date dateVisu)
 	{
-		this.his_dateVisu = his_dateVisu;
+		this.dateVisu = dateVisu;
 	}
 
 	@OneToOne
