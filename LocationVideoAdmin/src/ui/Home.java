@@ -1,4 +1,6 @@
+package ui;
 import java.awt.Color;
+import java.awt.Dialog;
 import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,15 +9,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
+
+import bean.LocVideoBean;
 
 import metier.Categorie;
+import metier.Support;
 import metier.Video;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class Home extends JFrame implements ActionListener
@@ -30,37 +38,42 @@ public class Home extends JFrame implements ActionListener
 	
 	List<Video> videos;
 	List<Categorie> categories;
+	List<Support> supports;
 	
 	public Home(){
 		super();
 		build();
 		
-		//addCat();
-		//addFilm();
-		
 		categories = LocVideoBean.getInstance().getCategories();
 		videos = LocVideoBean.getInstance().getVideos();
+		supports = LocVideoBean.getInstance().getSupports();
 		
 		fillCatTab();
 		fillFilmTab();
 	}
 	
-	private void addFilm()
+	public List<Categorie> getCategories()
 	{
-		Video video = new Video();
-		video.setNom("Avatar");
-		video.setDescription("film de James Cameron");
-		video.setDateCreation(new Date());
-		
-		LocVideoBean.getInstance().ajoutVideo(video);
+		return categories;
 	}
 	
-	private void addCat()
+	public List<Support> getSupports()
 	{
-		Categorie categorie = new Categorie();
-		categorie.setNom("Aventure");
-		
-		LocVideoBean.getInstance().ajoutCategorie(categorie);
+		return supports;
+	}
+	
+	public void addFilm(Video vid)
+	{
+		Video video = LocVideoBean.getInstance().ajoutVideo(vid);
+		videos.add(video);
+		fillFilmTab();
+	}
+	
+	public void addCat(Categorie cat)
+	{
+		Categorie categorie = LocVideoBean.getInstance().ajoutCategorie(cat);
+		categories.add(categorie);
+		fillCatTab();
 	}
 	
 	public void fillCatTab()
@@ -87,7 +100,28 @@ public class Home extends JFrame implements ActionListener
 			
 			video.add(vid.getNom());
 			video.add(vid.getDescription());
+			
+			if(vid.getCategorie() != null)
+				video.add(vid.getCategorie().getNom());
+			else 
+				video.add("");
+			
+			if(vid.getSupports() != null)
+			{
+				String sups = new String();
+				Iterator<Support> it= vid.getSupports().iterator();
+				while (it.hasNext()) 
+				{
+					Support sup = (Support) it.next();
+					sups += (sup.getLibelle() + ", ");
+				}
+				video.add(sups);
+			}
+			else 
+				video.add("");
+			
 			video.add(vid.getDateCreation().toString());
+			
 			
 			filmTab.addLine(video);
 		}
@@ -116,6 +150,14 @@ public class Home extends JFrame implements ActionListener
 				fillFilmTab();
 			}
 		}
+		else if(arg0.getSource() == addCatBtn)
+		{
+			AddCatDialog dialog = new AddCatDialog(this);
+		}
+		else if(arg0.getSource() == addFilmBtn)
+		{
+			AddFilmDialog dialog = new AddFilmDialog(this);
+		}
 	}
 	
 	private void build(){
@@ -141,10 +183,12 @@ public class Home extends JFrame implements ActionListener
 		List<String> colonnesFilm = new ArrayList<String>();
 		colonnesFilm.add("Titre");
 		colonnesFilm.add("Description");
+		colonnesFilm.add("Categorie");
+		colonnesFilm.add("Support");
 		colonnesFilm.add("Date");
 		
 		catTab = new Tableau(colonnesCat, 150, 300);
-		filmTab = new Tableau(colonnesFilm, 500, 300);
+		filmTab = new Tableau(colonnesFilm, 485, 300);
 		
 		addCatBtn = new JButton("+");
 		delCatBtn = new JButton("-");
@@ -156,10 +200,10 @@ public class Home extends JFrame implements ActionListener
 		addFilmBtn.addActionListener(this);
 		delFilmBtn.addActionListener(this);
 		
-		addCatBtn.setPreferredSize(new Dimension(30,30));
-		delCatBtn.setPreferredSize(new Dimension(30,30));
-		addFilmBtn.setPreferredSize(new Dimension(30,30));
-		delFilmBtn.setPreferredSize(new Dimension(30,30));
+		addCatBtn.setPreferredSize(new Dimension(45,30));
+		delCatBtn.setPreferredSize(new Dimension(45,30));
+		addFilmBtn.setPreferredSize(new Dimension(45,30));
+		delFilmBtn.setPreferredSize(new Dimension(45,30));
 		
 		c.anchor = GridBagConstraints.LINE_START;
 		c.insets = new Insets(5,5,5,5);
