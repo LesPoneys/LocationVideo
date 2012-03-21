@@ -1,3 +1,4 @@
+package ui;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -13,14 +14,21 @@ public class Tableau extends JPanel
     
     public Tableau(List<String> colonnes, int width, int height) 
     {
-		tableau = new  DefaultTableModel();
+		tableau = new  DefaultTableModel(){
+		    @Override
+		    public boolean isCellEditable(int row, int column) {
+		       //all cells false
+		       return false;
+		    }
+		};
 		
 		for(int i = 0; i < colonnes.size(); i++)
 		{
 			tableau.addColumn(colonnes.get(i));
 		}
-	
+		
 		table = new JTable(tableau);
+		table.getTableHeader().setReorderingAllowed(false);
 		table.setPreferredScrollableViewportSize(new Dimension(width, height));
 		JScrollPane avecAsc = new JScrollPane(table);   
 		add(new JScrollPane(table), BorderLayout.CENTER);
@@ -33,14 +41,18 @@ public class Tableau extends JPanel
     	for (int i = 0; i < line.size(); i++)
     	{
     		if(i < tableau.getColumnCount())
-    		tableau.setValueAt(line.get(i),nbRow,i);
+    			tableau.setValueAt(line.get(i),nbRow,i);
     	}
     	
     }
     
     public void removeAllRow()
     {
-    	tableau.getDataVector().removeAllElements();
+    	int rowCount= tableau.getRowCount();
+    	for(int i=0;i<rowCount;i++ )
+    	{
+    		tableau.removeRow(0);
+        }
     }
     
     public int getSelectedRow()
