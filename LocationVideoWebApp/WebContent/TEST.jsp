@@ -9,9 +9,7 @@
 	
 	  <title></title>
 		
-	  <style type='text/css'  media='all'>
-   				@import '\WebContent\CSS\style.css';
-		</style>
+	   <link rel="stylesheet" media="screen" type="text/css" title="Exemple" href="./CSS/style.css" />
 	</head>
 	<body>
 	<div id="header">
