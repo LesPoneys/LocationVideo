@@ -30,15 +30,18 @@ public class Home extends JFrame implements ActionListener
 {
 	private Tableau catTab;
 	private Tableau filmTab;
+	private Tableau supTab;
 	
-	JButton addCatBtn;
-	JButton delCatBtn;
-	JButton addFilmBtn;
-	JButton delFilmBtn;
+	private JButton addCatBtn;
+	private JButton delCatBtn;
+	private JButton addFilmBtn;
+	private JButton delFilmBtn;
+	private JButton addSupBtn;
+	private JButton delSupBtn;
 	
-	List<Video> videos;
-	List<Categorie> categories;
-	List<Support> supports;
+	private List<Video> videos;
+	private List<Categorie> categories;
+	private List<Support> supports;
 	
 	public Home(){
 		super();
@@ -50,6 +53,7 @@ public class Home extends JFrame implements ActionListener
 		
 		fillCatTab();
 		fillFilmTab();
+		fillSupTab();
 	}
 	
 	public List<Categorie> getCategories()
@@ -74,6 +78,13 @@ public class Home extends JFrame implements ActionListener
 		Categorie categorie = LocVideoBean.getInstance().ajoutCategorie(cat);
 		categories.add(categorie);
 		fillCatTab();
+	}
+	
+	public void addSup(Support sup)
+	{
+		Support support = LocVideoBean.getInstance().ajoutSupport(sup);
+		supports.add(support);
+		fillSupTab();
 	}
 	
 	public void fillCatTab()
@@ -127,6 +138,20 @@ public class Home extends JFrame implements ActionListener
 		}
 	}
 	
+	public void fillSupTab()
+	{
+		supTab.removeAllRow();
+		for(int i = 0; i < supports.size(); i++)
+		{
+			Support sup = (Support)supports.get(i);
+			List<String> support = new ArrayList<String>();
+			
+			support.add(sup.getLibelle());
+
+			supTab.addLine(support);
+		}
+	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
@@ -150,13 +175,27 @@ public class Home extends JFrame implements ActionListener
 				fillFilmTab();
 			}
 		}
+		else if(arg0.getSource() == delSupBtn)
+		{
+			int row = supTab.getSelectedRow();
+			if(row != -1)
+			{
+				LocVideoBean.getInstance().supprimerSupport(supports.get(row).getId());
+				supports.remove(row);
+				fillSupTab();
+			}
+		}
 		else if(arg0.getSource() == addCatBtn)
 		{
-			AddCatDialog dialog = new AddCatDialog(this);
+			new AddCatDialog(this);
 		}
 		else if(arg0.getSource() == addFilmBtn)
 		{
-			AddFilmDialog dialog = new AddFilmDialog(this);
+			new AddFilmDialog(this);
+		}
+		else if(arg0.getSource() == addSupBtn)
+		{
+			new AddSupDialog(this);
 		}
 	}
 	
@@ -177,6 +216,7 @@ public class Home extends JFrame implements ActionListener
 		
 		JLabel catLabel = new JLabel("Categories :");
 		JLabel filmLabel = new JLabel("Films :");
+		JLabel supLabel = new JLabel("Supports :");
 		
 		List<String> colonnesCat = new ArrayList<String>();
 		colonnesCat.add("Nom");
@@ -187,23 +227,30 @@ public class Home extends JFrame implements ActionListener
 		colonnesFilm.add("Support");
 		colonnesFilm.add("Date");
 		
-		catTab = new Tableau(colonnesCat, 150, 300);
-		filmTab = new Tableau(colonnesFilm, 485, 300);
+		catTab = new Tableau(colonnesCat, 140, 150);
+		filmTab = new Tableau(colonnesFilm, 400, 380);
+		supTab = new Tableau(colonnesCat, 140, 150);
 		
 		addCatBtn = new JButton("+");
 		delCatBtn = new JButton("-");
 		addFilmBtn = new JButton("+");
 		delFilmBtn = new JButton("-");
+		addSupBtn = new JButton("+");
+		delSupBtn = new JButton("-");
 		
 		addCatBtn.addActionListener(this);
 		delCatBtn.addActionListener(this);
 		addFilmBtn.addActionListener(this);
 		delFilmBtn.addActionListener(this);
+		addSupBtn.addActionListener(this);
+		delSupBtn.addActionListener(this);
 		
 		addCatBtn.setPreferredSize(new Dimension(45,30));
 		delCatBtn.setPreferredSize(new Dimension(45,30));
 		addFilmBtn.setPreferredSize(new Dimension(45,30));
 		delFilmBtn.setPreferredSize(new Dimension(45,30));
+		addSupBtn.setPreferredSize(new Dimension(45,30));
+		delSupBtn.setPreferredSize(new Dimension(45,30));
 		
 		c.anchor = GridBagConstraints.LINE_START;
 		c.insets = new Insets(5,5,5,5);
@@ -223,7 +270,7 @@ public class Home extends JFrame implements ActionListener
 		c.gridx = 0;
 		c.gridy = 1;
 		c.gridwidth = 1;
-		c.gridheight = 3;
+		c.gridheight = 2;
 		panel.add(catTab,c);
 		
 		c.gridx = 1;
@@ -236,12 +283,14 @@ public class Home extends JFrame implements ActionListener
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.gridheight = 1;
+		c.anchor = GridBagConstraints.PAGE_START;
 		panel.add(delCatBtn,c);
 		
 		c.gridx = 2;
 		c.gridy = 1;
 		c.gridwidth = 1;
-		c.gridheight = 3;
+		c.gridheight = 5;
+		c.anchor = GridBagConstraints.LINE_START;
 		panel.add(filmTab,c);
 		
 		c.gridx = 3;
@@ -254,7 +303,34 @@ public class Home extends JFrame implements ActionListener
 		c.gridy = 2;
 		c.gridwidth = 1;
 		c.gridheight = 1;
+		c.anchor = GridBagConstraints.PAGE_START;
 		panel.add(delFilmBtn,c);
+		
+		c.gridx = 0;
+		c.gridy = 3;
+		c.gridwidth = 2;
+		c.gridheight = 1;
+		c.anchor = GridBagConstraints.LINE_START;
+		panel.add(supLabel,c);
+		
+		c.gridx = 0;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		c.gridheight = 2;
+		panel.add(supTab,c);
+		
+		c.gridx = 1;
+		c.gridy = 4;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		panel.add(addSupBtn,c);
+		
+		c.gridx = 1;
+		c.gridy = 5;
+		c.gridwidth = 1;
+		c.gridheight = 1;
+		c.anchor = GridBagConstraints.PAGE_START;
+		panel.add(delSupBtn,c);
 
 		return panel;
 	}

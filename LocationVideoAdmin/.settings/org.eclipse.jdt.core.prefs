@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-#Wed Mar 21 08:53:49 CET 2012
-=======
 #Wed Mar 21 09:47:37 CET 2012
->>>>>>> 86221204803f996a1f35f0d83016c8669ee0dab6
+
 eclipse.preferences.version=1
 org.eclipse.jdt.core.compiler.codegen.inlineJsrBytecode=enabled
 org.eclipse.jdt.core.compiler.codegen.targetPlatform=1.7

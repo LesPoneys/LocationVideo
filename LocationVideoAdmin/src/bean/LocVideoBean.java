@@ -82,6 +82,16 @@ public class LocVideoBean
 		return bean.getCategories();
 	}
 	
+	public void supprimerSupport(int id)
+	{
+		bean.deleteSupport(id);
+	}
+	
+	public Support ajoutSupport(Support sup)
+	{
+		return bean.ajoutSupport(sup);
+	}
+	
 	public List<Support> getSupports()
 	{
 		return bean.getSupports();
