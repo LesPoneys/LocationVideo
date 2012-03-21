@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import metier.Categorie;
+import metier.Support;
 import metier.Video;
 
 @Stateful
@@ -60,6 +61,29 @@ public class LocationVideoBean implements ILocationVideoBean
 	public Categorie getCategorie(int id)
 	{
 		return entityManager.find(Categorie.class, id);
+	}
+	
+	public Support ajoutSupport(Support sup)
+	{
+		entityManager.persist(sup);
+		return sup;
+	}
+	
+	public void deleteSupport(int id)
+	{
+		Support sup = entityManager.find(Support.class,id);
+		entityManager.remove(sup);
+	}
+	
+	public List<Support> getSupports()
+	{
+		Query query = entityManager.createQuery("from Support");
+		return query.getResultList() ;
+	}
+	
+	public Support getSupport(int id)
+	{
+		return entityManager.find(Support.class, id);
 	}
 
 }

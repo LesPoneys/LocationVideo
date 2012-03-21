@@ -1,3 +1,4 @@
+package bean;
 import java.util.List;
 
 import javax.naming.Context;
@@ -6,6 +7,7 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import metier.Categorie;
+import metier.Support;
 import metier.Video;
 
 import bean.ILocationVideoBean;
@@ -53,14 +55,16 @@ public class LocVideoBean
 		bean.deleteVideo(id);
 	}
 	
-	public void ajoutVideo(Video vid)
+	public Video ajoutVideo(Video vid)
 	{
-		bean.ajoutVideo(vid);
+		return bean.ajoutVideo(vid);
 	}
 	
 	public List<Video> getVideos()
 	{
-		return bean.getVideos();
+		List<Video> vid = bean.getVideos();
+
+		return vid;
 	}
 	
 	public void supprimerCategorie(int id)
@@ -68,13 +72,28 @@ public class LocVideoBean
 		bean.deleteCategorie(id);
 	}
 	
-	public void ajoutCategorie(Categorie cat)
+	public Categorie ajoutCategorie(Categorie cat)
 	{
-		bean.ajoutCategorie(cat);
+		return bean.ajoutCategorie(cat);
 	}
 	
 	public List<Categorie> getCategories()
 	{
 		return bean.getCategories();
+	}
+	
+	public void supprimerSupport(int id)
+	{
+		bean.deleteSupport(id);
+	}
+	
+	public Support ajoutSupport(Support sup)
+	{
+		return bean.ajoutSupport(sup);
+	}
+	
+	public List<Support> getSupports()
+	{
+		return bean.getSupports();
 	}
 }

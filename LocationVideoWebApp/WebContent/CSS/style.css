@@ -1,0 +1,33 @@
+body{ margin: 0; }
+
+#header{ 
+	margin: 0; 
+	
+	height: 100px;
+	
+	font-family: Tahoma;
+	
+	background: -moz-linear-gradient(top, #FFF, #acd94c);
+	background: -webkit-linear-gradient(top, #FFF, #acd94c);
+	background: -ms-linear-gradient(top, #FFF, #acd94c);
+	background: -o-linear-gradient(top, #FFF, #acd94c);
+	width: 90%; margin-left: 5%; margin-top: 10px;
+	-webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;
+	border: 1px solid #acd94c;
+}
+
+#header h1 { margin: 0; margin-left: 100px; padding-top: 20px; font-size: 25px; }
+#header h2 { margin: 0; margin-left: 120px; font-size: 12px; }
+
+#conteneur{ height: auto; padding: 20px 0px; background-color: #333333; margin: 0% 25% 0% 25%; -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px;}
+#conteneur form{ margin-right: 30px;}
+#conteneur label{ width: 150px; color: #DDDDDD; font-size: 12px; }
+#conteneur input[type="text"], input[type="password"]{ width: 100%; height: 40px; background: #EEEEEE; border: 4px solid #3299CC; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
+#conteneur input[type="submit"]{ width: 83%; margin-left: 10%; height: 40px; border: 3px solid #3299CC; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; }
+
+#conteneur table{ margin-left: 25%; width: 50%; }
+#conteneur .label{ padding-top: 30px; }
+
+#titre{ margin: 15% 0% 0% 25%; }
+#titre h1{ margin: 0; margin-bottom: 10px;}
+#titre img{ margin-bottom: -15px; padding-right: 5px;}
