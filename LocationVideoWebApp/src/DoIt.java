@@ -14,6 +14,6 @@ public class DoIt extends HttpServlet {
 		
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		out.println("<h1>Ma page principale made servlet</h1>");
+		out.println("<h1>DoIt</h1>");
 	}	
 }
