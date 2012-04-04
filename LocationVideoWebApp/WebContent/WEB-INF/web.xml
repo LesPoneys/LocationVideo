@@ -1,22 +1,53 @@
-<web-app>
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>WebAppTest</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+	
 	<servlet>
-		<servlet-class>DoIt</servlet-class>
-		<servlet-name>firstServlet</servlet-name>
+    	<servlet-name>firstServlet</servlet-name>
+		<servlet-class>com.servlet.test.DoIt</servlet-class>
 	</servlet>
 	
-	 <servlet>
-		<servlet-class>InvokeJsp</servlet-class>
+	<servlet>
 		<servlet-name>invoke</servlet-name>
+		<servlet-class>com.servlet.test.InvokeJsp</servlet-class>	
+	</servlet>
+	
+	<servlet>
+		<servlet-name>FirstForm</servlet-name>
+		<servlet-class>com.servlet.test.Formulaire1</servlet-class>
+	</servlet>
+	
+	<servlet>
+		<servlet-name>FormAction</servlet-name>
+		<servlet-class>com.servlet.test.FormulaireAction</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
 		<servlet-name>firstServlet</servlet-name>
-		<url-pattern>/firstServlet</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-  
+
 	<servlet-mapping>
 		<servlet-name>invoke</servlet-name>
 		<url-pattern>/invoke</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>FirstForm</servlet-name>
+		<url-pattern>/form</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>FormAction</servlet-name>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
   
 </web-app>
