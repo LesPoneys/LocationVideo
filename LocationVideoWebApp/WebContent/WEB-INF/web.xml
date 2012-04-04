@@ -12,27 +12,37 @@
 	
 	<servlet>
     	<servlet-name>firstServlet</servlet-name>
-		<servlet-class>com.servlet.test.DoIt</servlet-class>
+		<servlet-class>servlet.DoIt</servlet-class>
 	</servlet>
 	
 	<servlet>
 		<servlet-name>invoke</servlet-name>
-		<servlet-class>com.servlet.test.InvokeJsp</servlet-class>	
+		<servlet-class>servlet.InvokeJsp</servlet-class>	
 	</servlet>
 	
 	<servlet>
 		<servlet-name>FirstForm</servlet-name>
-		<servlet-class>com.servlet.test.Formulaire1</servlet-class>
+		<servlet-class>servlet.Formulaire1</servlet-class>
 	</servlet>
 	
 	<servlet>
 		<servlet-name>FormAction</servlet-name>
-		<servlet-class>com.servlet.test.FormulaireAction</servlet-class>
+		<servlet-class>servlet.FormulaireAction</servlet-class>
+	</servlet>
+	
+	<servlet>
+    	<servlet-name>connexion</servlet-name>
+		<servlet-class>servlet.connexion</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
+		<servlet-name>connexion</servlet-name>
+		<url-pattern>/connexion</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
 		<servlet-name>firstServlet</servlet-name>
-		<url-pattern>/</url-pattern>
+		<url-pattern>/DoIt</url-pattern>
 	</servlet-mapping>
 
 	<servlet-mapping>
@@ -49,5 +59,6 @@
 		<servlet-name>FormAction</servlet-name>
 		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-  
+	
+	  
 </web-app>

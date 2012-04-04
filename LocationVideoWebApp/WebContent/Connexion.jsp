@@ -33,6 +33,7 @@
 					<tr><td class="label"><input type="submit" name="envoyer" value="Connexion" /></td></tr>
 				</table>
 			</form>
+			<p><% out.println("Pas encore inscrit ?"); %><a href="inscription.jsp" ><% out.println("S'inscrire"); %></a></p>
 		</div>
 	
 		
