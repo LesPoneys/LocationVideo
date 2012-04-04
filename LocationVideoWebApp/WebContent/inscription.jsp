@@ -22,7 +22,7 @@
 </div>
 
 <div id="conteneur">
-	<form>
+	<form name="firstForm" action="firstFormAction.do" method="post">
 		<table>
 			<tr><td class="label"><label for="login">Login : </label></td></tr>
 			<tr><td><input type="text" id="login" name="login" /></td></tr>
