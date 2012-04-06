@@ -7,6 +7,7 @@ import java.util.Enumeration;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -27,13 +28,18 @@ public class DoConnexion extends HttpServlet {
 		Utilisateur Uti;
 		//List<Utilisateur> MesUti =LocVideoBean.getInstance().getLesUtilisateurs(); 
 		Uti = LocVideoBean.getInstance().IdentificationUtilisateur(request.getParameter("login"), request.getParameter("mdp"));
-		out.println(Uti);
+		
 		if (Uti != null)
 		{
-			out.println("Connecté");
+			request.setAttribute("uti", Uti);
+			RequestDispatcher dispatch = request.getRequestDispatcher("acceuil.jsp");
+			dispatch.forward(request, response);
+
 		}else
-		{
-			out.println("NON Connecté");
+		{	
+			request.setAttribute("statut", "ECHEC");
+			RequestDispatcher dispatch = request.getRequestDispatcher("connexion.jsp");
+			dispatch.forward(request, response);
 		}  
 		
 	}

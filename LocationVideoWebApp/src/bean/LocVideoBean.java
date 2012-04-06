@@ -118,5 +118,5 @@ public class LocVideoBean
 	{
 		return bean.IdentificationUtilisateur(Login,  Mdp);
 	}
-	
+
 }

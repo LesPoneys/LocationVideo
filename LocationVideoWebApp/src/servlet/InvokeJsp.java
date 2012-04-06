@@ -12,8 +12,9 @@ public class InvokeJsp extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 					throws IOException, ServletException{
-		
+
 		RequestDispatcher dispatch = request.getRequestDispatcher("firstJsp.jsp");
+		
 		dispatch.forward(request, response);
 	}	
 }

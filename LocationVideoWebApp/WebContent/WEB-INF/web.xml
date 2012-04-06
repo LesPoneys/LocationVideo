@@ -9,56 +9,75 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-	
-	<servlet>
-    	<servlet-name>firstServlet</servlet-name>
-		<servlet-class>servlet.DoIt</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>invoke</servlet-name>
-		<servlet-class>servlet.InvokeJsp</servlet-class>	
-	</servlet>
-	
-	<servlet>
-		<servlet-name>FirstForm</servlet-name>
-		<servlet-class>servlet.Formulaire1</servlet-class>
-	</servlet>
-	
-	<servlet>
-		<servlet-name>DoConnexion</servlet-name>
-		<servlet-class>servlet.DoConnexion</servlet-class>
-	</servlet>
-	
-	<servlet>
-    	<servlet-name>connexion</servlet-name>
-		<servlet-class>servlet.connexion</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>connexion</servlet-name>
-		<url-pattern>/connexion</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>firstServlet</servlet-name>
-		<url-pattern>/DoIt</url-pattern>
-	</servlet-mapping>
-
-	<servlet-mapping>
-		<servlet-name>invoke</servlet-name>
-		<url-pattern>/invoke</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>FirstForm</servlet-name>
-		<url-pattern>/form</url-pattern>
-	</servlet-mapping>
-	
-	<servlet-mapping>
-		<servlet-name>DoConnexion</servlet-name>
-		<url-pattern>/connect.do</url-pattern>
-	</servlet-mapping>
-	
-	  
+  
+  <servlet>
+    <servlet-name>firstServlet</servlet-name>
+    <servlet-class>servlet.DoIt</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>invoke</servlet-name>
+    <servlet-class>servlet.InvokeJsp</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>FirstForm</servlet-name>
+    <servlet-class>servlet.Formulaire1</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>DoConnexion</servlet-name>
+    <servlet-class>servlet.DoConnexion</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>connexion</servlet-name>
+    <servlet-class>servlet.connexion</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>acceuil</servlet-name>
+    <servlet-class>servlet.acceuil</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>inscription</servlet-name>
+    <servlet-class>servlet.inscription</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>connexion</servlet-name>
+    <url-pattern>/connexion</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>firstServlet</servlet-name>
+    <url-pattern>/DoIt</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>invoke</servlet-name>
+    <url-pattern>/invoke</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>FirstForm</servlet-name>
+    <url-pattern>/form</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>DoConnexion</servlet-name>
+    <url-pattern>/connect.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>acceuil</servlet-name>
+    <url-pattern>/acceuil</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>inscription</servlet-name>
+    <url-pattern>/inscription.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

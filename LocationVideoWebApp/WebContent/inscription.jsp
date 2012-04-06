@@ -22,7 +22,7 @@
 </div>
 
 <div id="conteneur">
-	<form name="firstForm" action="firstFormAction.do" method="post">
+	<form name="firstForm" action="inscription.do" method="post">
 		<table>
 			<tr><td class="label"><label for="login">Login : </label></td></tr>
 			<tr><td><input type="text" id="login" name="login" /></td></tr>
@@ -36,7 +36,7 @@
 			<tr><td class="label"><label for="mail">E-mail : </label></td></tr>
 			<tr><td><input type="text" id="mail" name="mail" /></td></tr>
 		
-			<tr><td class="label"><input type="submit" name="inscription" value="Inscription" /></td></tr>
+			<tr><td class="label"><input type="submit" name="inscription" value="inscription" /></td></tr>
 		</table>
 	</form>
 </div>

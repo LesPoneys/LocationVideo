@@ -82,5 +82,4 @@ public class Utilisateur implements Serializable
 	public void setIsAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
-	
 }
