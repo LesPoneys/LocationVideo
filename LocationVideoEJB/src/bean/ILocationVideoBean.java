@@ -7,6 +7,7 @@ import javax.persistence.Query;
 
 import metier.Categorie;
 import metier.Support;
+import metier.Utilisateur;
 import metier.Video;
 
 @Remote
@@ -26,4 +27,10 @@ public interface ILocationVideoBean
 	public void deleteSupport(int id);
 	public List<Support> getSupports();
 	public Support getSupport(int id);
+	
+	public Utilisateur ajoutUtilisateur(Utilisateur uti);
+	public void deleteUtilisateur(int id);
+	public List<Utilisateur> getLesUtilisateurs();
+	public Utilisateur getUtilisateur(int id);
+	public Utilisateur IdentificationUtilisateur(String login, String mdp);
 }

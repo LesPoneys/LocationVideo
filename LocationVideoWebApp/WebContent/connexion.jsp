@@ -22,7 +22,7 @@
 		</div>
 		
 		<div id="conteneur">
-			<form>
+			<form name="connexion" action="connect.do" method="post">>
 				<table>
 					<tr><td><label for="login"><% out.println("Login :");%> </label></td></tr>
 					<tr><td><input type="text" id="login" name="login" /></td></tr>
@@ -30,7 +30,7 @@
 					<tr><td class="label"><label for="mdp"><% out.println("Mot de passe :");%> </label></td></tr>
 					<tr><td><input type="password" id="mdp" name="mdp" /></td></tr>
 		
-					<tr><td class="label"><input type="submit" name="envoyer" value="Connexion" /></td></tr>
+					<tr><td class="label"><input type="submit" name="envoyer" value="connexion" /></td></tr>
 				</table>
 			</form>
 			<p><% out.println("Pas encore inscrit ?"); %><a href="inscription.jsp" ><% out.println("S'inscrire"); %></a></p>

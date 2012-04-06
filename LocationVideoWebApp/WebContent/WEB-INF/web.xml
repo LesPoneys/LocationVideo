@@ -26,8 +26,8 @@
 	</servlet>
 	
 	<servlet>
-		<servlet-name>FormAction</servlet-name>
-		<servlet-class>servlet.FormulaireAction</servlet-class>
+		<servlet-name>DoConnexion</servlet-name>
+		<servlet-class>servlet.DoConnexion</servlet-class>
 	</servlet>
 	
 	<servlet>
@@ -56,8 +56,8 @@
 	</servlet-mapping>
 	
 	<servlet-mapping>
-		<servlet-name>FormAction</servlet-name>
-		<url-pattern>*.do</url-pattern>
+		<servlet-name>DoConnexion</servlet-name>
+		<url-pattern>/connect.do</url-pattern>
 	</servlet-mapping>
 	
 	  

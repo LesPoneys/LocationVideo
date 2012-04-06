@@ -9,6 +9,7 @@ import javax.persistence.Query;
 
 import metier.Categorie;
 import metier.Support;
+import metier.Utilisateur;
 import metier.Video;
 
 @Stateful
@@ -85,5 +86,38 @@ public class LocationVideoBean implements ILocationVideoBean
 	{
 		return entityManager.find(Support.class, id);
 	}
+	
+	public Utilisateur ajoutUtilisateur(Utilisateur uti)
+	{
+		entityManager.persist(uti);
+		return uti;
+	}
+	
+	public void deleteUtilisateur(int id)
+	{
+		Utilisateur uti = entityManager.find(Utilisateur.class,id);
+		entityManager.remove(uti);
+	}
+	
+	public List<Utilisateur> getLesUtilisateurs()
+	{
+		Query query = entityManager.createQuery("from Utilisateur");
+		return query.getResultList() ;
+	}
+	
+	public Utilisateur getUtilisateur(int id)
+	{
+		return entityManager.find(Utilisateur.class, id);
+	}
+	
+	public Utilisateur IdentificationUtilisateur(String login, String mdp) {
 
+		String MaClause ="from Utilisateur where login='"+login+"' and mdp='"+mdp+"'";
+		Query query = entityManager.createQuery(MaClause);
+		if (query.getResultList().size() >0)
+			return (Utilisateur)query.getResultList().get(0);
+		
+		return null;
+	}
+	
 }

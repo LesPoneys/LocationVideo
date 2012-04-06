@@ -8,6 +8,7 @@ import javax.rmi.PortableRemoteObject;
 
 import metier.Categorie;
 import metier.Support;
+import metier.Utilisateur;
 import metier.Video;
 
 import bean.ILocationVideoBean;
@@ -96,4 +97,26 @@ public class LocVideoBean
 	{
 		return bean.getSupports();
 	}
+	
+	public List<Utilisateur> getLesUtilisateurs()
+	{
+		return bean.getLesUtilisateurs();
+	}
+	
+	public void supprimerUtilisateur(int id)
+	{
+		bean.deleteUtilisateur(id);
+	}
+	
+	public Utilisateur ajoutUtilisateur(Utilisateur Uti)
+	{
+		return bean.ajoutUtilisateur(Uti);
+	}
+	
+		
+	public Utilisateur IdentificationUtilisateur(String Login, String Mdp)
+	{
+		return bean.IdentificationUtilisateur(Login,  Mdp);
+	}
+	
 }
