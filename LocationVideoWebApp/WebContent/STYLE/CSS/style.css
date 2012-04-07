@@ -44,6 +44,6 @@ margin-left: 10%; height: 40px; border: 3px solid #116699; -webkit-border-radius
 #conteneur p{ text-align: center; color: #ffffff; }
 
 
-#titre{ margin: 8% 0% 0% 24%; border: 1px solid black; background: white; width: 52%; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
+#titre{ margin: 2% 0% 0% 24%; border: 1px solid black; background: white; width: 52%; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
 #titre h1{ margin: 0; margin-bottom: 10px; font-family: Consolas;}
 #titre img{ margin-bottom: -15px; padding-right: 5px; padding-left: 5px;}
