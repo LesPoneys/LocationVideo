@@ -99,7 +99,7 @@ public class LocationVideoBean implements ILocationVideoBean
 		entityManager.remove(uti);
 	}
 	
-	public List<Utilisateur> getLesUtilisateurs()
+	public List<Utilisateur> getUtilisateurs()
 	{
 		Query query = entityManager.createQuery("from Utilisateur");
 		return query.getResultList() ;
@@ -108,6 +108,16 @@ public class LocationVideoBean implements ILocationVideoBean
 	public Utilisateur getUtilisateur(int id)
 	{
 		return entityManager.find(Utilisateur.class, id);
+	}
+	
+	public Utilisateur getUtilisateurbyLogin(String login)
+	{
+		String MaClause ="from Utilisateur where login='"+login+"'";
+		Query query = entityManager.createQuery(MaClause);
+		if (query.getResultList().size() >0)
+			return (Utilisateur)query.getResultList().get(0);
+		
+		return null;
 	}
 	
 	public Utilisateur IdentificationUtilisateur(String login, String mdp) {

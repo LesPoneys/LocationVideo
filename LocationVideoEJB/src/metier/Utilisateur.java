@@ -21,6 +21,16 @@ public class Utilisateur implements Serializable
 	{
 		super();
 	}
+	public Utilisateur(String _login, String _mdp, String _nom, String _prenom, String _email)
+	{
+		super();
+		this.email= _email;
+		this.isAdmin = false;
+		this.login= _login;
+		this.mdp= _mdp;
+		this.nom=_nom;
+		this.prenom=_prenom;
+	}
 	
 	@Id @GeneratedValue
 	public int getId() 

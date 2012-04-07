@@ -30,7 +30,8 @@ public interface ILocationVideoBean
 	
 	public Utilisateur ajoutUtilisateur(Utilisateur uti);
 	public void deleteUtilisateur(int id);
-	public List<Utilisateur> getLesUtilisateurs();
+	public List<Utilisateur> getUtilisateurs();
 	public Utilisateur getUtilisateur(int id);
+	public Utilisateur getUtilisateurbyLogin(String login);
 	public Utilisateur IdentificationUtilisateur(String login, String mdp);
 }

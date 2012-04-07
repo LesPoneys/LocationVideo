@@ -37,7 +37,7 @@
 					<tr><td class="label"><input type="submit" name="envoyer" value="connexion" /></td></tr>
 				</table>
 			</form>
-			<p><% out.println("Pas encore inscrit ?"); %><a href="inscription.jsp" ><% out.println("S'inscrire"); %></a></p>
+			<p><a href="inscription.jsp" ><% out.println("Pas encore inscrit ? S'inscrire"); %></a></p>
 		</div>
 	
 		

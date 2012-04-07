@@ -98,9 +98,14 @@ public class LocVideoBean
 		return bean.getSupports();
 	}
 	
-	public List<Utilisateur> getLesUtilisateurs()
+	public List<Utilisateur> getUtilisateurs()
 	{
-		return bean.getLesUtilisateurs();
+		return bean.getUtilisateurs();
+	}
+	
+	public Utilisateur getUtilisateurbyLogin(String login)
+	{
+		return bean.getUtilisateurbyLogin(login);
 	}
 	
 	public void supprimerUtilisateur(int id)
