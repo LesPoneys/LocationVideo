@@ -123,5 +123,15 @@ public class LocVideoBean
 	{
 		return bean.IdentificationUtilisateur(Login,  Mdp);
 	}
+	
+	public List<Video> getVideobyCategorie(int idcat)
+	{
+		return bean.getVideobyCategorie(idcat);
+	}
+	
+	public Categorie getCategoriebyNom(String cat)
+	{
+		return bean.getCategoriebyNom(cat);
+	}
 
 }

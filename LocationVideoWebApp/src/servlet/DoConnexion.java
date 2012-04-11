@@ -12,8 +12,10 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import metier.Utilisateur;
+import metier.Video;
 
 import bean.LocVideoBean;
 
@@ -26,12 +28,14 @@ public class DoConnexion extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		Utilisateur Uti;
-		//List<Utilisateur> MesUti =LocVideoBean.getInstance().getLesUtilisateurs(); 
+	
 		Uti = LocVideoBean.getInstance().IdentificationUtilisateur(request.getParameter("login"), request.getParameter("mdp"));
 		
 		if (Uti != null)
 		{
-			request.setAttribute("uti", Uti);
+			// Recupere la session
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uti", Uti);
 			RequestDispatcher dispatch = request.getRequestDispatcher("acceuil.jsp");
 			dispatch.forward(request, response);
 
@@ -49,5 +53,7 @@ public class DoConnexion extends HttpServlet {
 			throws IOException, ServletException{
                 //Nous invoquons la méthode doGet avec les paramètres reçu par la méthode doPost
 		doGet(request, response);		
-	}	
+	}
+	
+	
 }

@@ -12,7 +12,7 @@ public class connexion extends HttpServlet
 {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException{
-
+		
 		RequestDispatcher dispatch = request.getRequestDispatcher("connexion.jsp");
 		dispatch.forward(request, response);
 	}	
