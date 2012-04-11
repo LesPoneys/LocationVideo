@@ -131,9 +131,6 @@ public class Home extends JFrame implements ActionListener
 			else 
 				video.add("");
 			
-			video.add(vid.getDateCreation().toString());
-			
-			
 			filmTab.addLine(video);
 		}
 	}
@@ -225,8 +222,7 @@ public class Home extends JFrame implements ActionListener
 		colonnesFilm.add("Description");
 		colonnesFilm.add("Categorie");
 		colonnesFilm.add("Support");
-		colonnesFilm.add("Date");
-		
+				
 		catTab = new Tableau(colonnesCat, 140, 150);
 		filmTab = new Tableau(colonnesFilm, 400, 380);
 		supTab = new Tableau(colonnesCat, 140, 150);
