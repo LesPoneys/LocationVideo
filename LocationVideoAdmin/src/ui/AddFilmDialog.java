@@ -18,10 +18,12 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.filechooser.FileFilter;
 
 import metier.Categorie;
 import metier.Support;
@@ -31,8 +33,10 @@ public class AddFilmDialog extends JDialog implements ActionListener
 {
 	JButton addBtn;
 	JButton cancelBtn;
+	//JButton imageBtn;
 	JTextField nameField;
 	JTextField descriptionField;
+	JTextField imageField;
 	JComboBox<String> catBox;
 	List<JCheckBox> supBoxs = new ArrayList<JCheckBox>();
 	Home parent;
@@ -76,6 +80,13 @@ public class AddFilmDialog extends JDialog implements ActionListener
 		descriptionField = new JTextField();
 		descriptionField.setColumns(15);
 		
+		JLabel imageLabel = new JLabel("Affiche :");
+		
+		imageField = new JTextField();
+		imageField.setColumns(15);
+		
+		
+		
 		JLabel catLabel = new JLabel("Categorie :");
 		
 		catBox = new JComboBox<String>();
@@ -89,9 +100,11 @@ public class AddFilmDialog extends JDialog implements ActionListener
 		
 		addBtn = new JButton("ok");
 		cancelBtn = new JButton("Annuler");
+	//	imageBtn = new JButton("+");
 		
 		addBtn.addActionListener(this);
 		cancelBtn.addActionListener(this);
+	//	imageBtn.addActionListener(this);
 		
 		c.anchor = GridBagConstraints.LINE_START;
 		c.insets = new Insets(5,5,5,5);
@@ -114,14 +127,27 @@ public class AddFilmDialog extends JDialog implements ActionListener
 		
 		c.gridx = 0;
 		c.gridy = 2;
-		panel.add(catLabel,c);
+		panel.add(imageLabel,c);
 		
 		c.gridx = 1;
 		c.gridy = 2;
-		panel.add(catBox,c);
+		panel.add(imageField,c);
+		
+	/*	c.gridx = 2;
+		c.gridy = 2 ;
+		c.gridwidth = 1;
+		panel.add(imageBtn,c);*/
 		
 		c.gridx = 0;
 		c.gridy = 3;
+		panel.add(catLabel,c);
+		
+		c.gridx = 1;
+		c.gridy = 3;
+		panel.add(catBox,c);
+		
+		c.gridx = 0;
+		c.gridy = 4;
 		panel.add(supportLabel,c);
 		
 		List<Support> supports = parent.getSupports();
@@ -130,17 +156,18 @@ public class AddFilmDialog extends JDialog implements ActionListener
 			JCheckBox check = new JCheckBox(supports.get(i).getLibelle());
 			supBoxs.add(check);
 			c.gridx = 1;
-			c.gridy = i + 3;
+			c.gridy = i + 4;
 			panel.add(check,c);
 		}
 		
 		c.gridx = 0;
-		c.gridy = 3 + ((supports.size() == 0) ? 1 : supports.size());
+		c.gridy = 4 + ((supports.size() == 0) ? 1 : supports.size());
 		c.gridwidth = 1;
 		panel.add(cancelBtn,c);
 		
-		c.gridx = 1;
-		c.gridy = 3 + ((supports.size() == 0) ? 1 : supports.size());
+		
+		c.gridx = 2;
+		c.gridy = 4 + ((supports.size() == 0) ? 1 : supports.size());
 		c.anchor = GridBagConstraints.LAST_LINE_END;
 		panel.add(addBtn,c);
 
@@ -171,8 +198,7 @@ public class AddFilmDialog extends JDialog implements ActionListener
 				Video vid = new Video();
 				vid.setNom(nameField.getText());
 				vid.setDescription(descriptionField.getText());
-				vid.setDateCreation(new Date());
-				
+				vid.setImage(imageField.getText());
 				List<Categorie> cats = parent.getCategories();
 				vid.setCategorie(cats.get(catBox.getSelectedIndex()));
 				
@@ -189,8 +215,23 @@ public class AddFilmDialog extends JDialog implements ActionListener
 				
 				parent.addFilm(vid);
 			}
+			close();
 		}
-		close();
+	/*	if(arg0.getSource() == imageBtn)
+		{
+			
+			 JFileChooser chooser = new JFileChooser();
+			
+		    int returnVal = chooser.showOpenDialog(parent);
+		    if(returnVal == JFileChooser.APPROVE_OPTION) {
+		       System.out.println("You chose to open this file: " +
+		            chooser.getSelectedFile().getName());
+		       System.out.println(chooser.getSelectedFile().getPath());
+		       imageField.setText(chooser.getSelectedFile().getPath());
+		    }
+			
+		}
+	*/
 		
 	}
 
