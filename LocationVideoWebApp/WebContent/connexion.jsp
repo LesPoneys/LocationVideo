@@ -23,7 +23,7 @@
 		
 			
 		<div id="conteneur">
-			<form name="connexion" action="connect.do" method="post">>
+			<form name="connexion" action="connect.do" method="post">
 				<table>
 					<tr><td><label ><%if (request.getAttribute("statut")=="ECHEC") 
 				out.print("Login , Mot de passe inconnue ");%></label></td></tr>
