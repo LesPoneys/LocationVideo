@@ -14,8 +14,8 @@
 <body>
 
 <div id="header">
-		<h1><% out.println("Poney Vidéos");%></h1>
-		<h2><% out.println("Les vidéos qui envoient du poneys");%></h2>
+		<h1><% out.print("Poney Vidéos");%></h1>
+		<h2><% out.print("Les vidéos qui envoient du poneys");%></h2>
 	</div>
 
 <div id="titre">
@@ -35,29 +35,29 @@ if (request.getAttribute("uti")!=null)
 	<form name="firstForm" action="inscription.do" method="post">
 		<table>
 		<tr><td><label><%if (request.getAttribute("erreur")=="login") 
-				out.println("Login déja utilisé ");%></label></td></tr>
+				out.print("Login déja utilisé ");%></label></td></tr>
 		<tr><td><label><%if (request.getAttribute("erreur")=="mdp") 
-				out.println("Mot de passe non identique ");%></label></td></tr>
+				out.print("Mot de passe non identique ");%></label></td></tr>
 		<tr><td><label><%if (request.getAttribute("erreur")=="champ vide") 
-				out.println("Vous n'avez pas renseigné tout les champs ");%></label></td></tr>
+				out.print("Vous n'avez pas renseigné tout les champs ");%></label></td></tr>
 			
 			<tr><td class="label"><label for="nom">Nom : </label></td></tr>
-			<tr><td><input type="text" id="nom" name="nom" value="<%out.println((Uti != null) ? Uti.getNom() : "");%>" /></td></tr>
+			<tr><td><input type="text" id="nom" name="nom" value="<%out.print((Uti != null) ? Uti.getNom() : "");%>" /></td></tr>
 
 			<tr><td class="label"><label for="prenom">Prénom : </label></td></tr>
-			<tr><td><input type="text" id="prenom" name="prenom" value="<%out.println((Uti != null) ? Uti.getPrenom() : "");%>"/></td></tr>
+			<tr><td><input type="text" id="prenom" name="prenom" value="<%out.print((Uti != null) ? Uti.getPrenom() : "");%>"/></td></tr>
 		
 			<tr><td class="label"><label for="login">Login : </label></td></tr>
-			<tr><td><input type="text" id="login" name="login" value="<%out.println((Uti != null) ? Uti.getLogin() : "");%>"/></td></tr>
+			<tr><td><input type="text" id="login" name="login" value="<%out.print((Uti != null) ? Uti.getLogin() : "");%>"/></td></tr>
 
 			<tr><td class="label"><label for="mdp">Mot de passe : </label></td></tr>
-			<tr><td><input type="password" id="mdp" name="mdp" value="<%out.println((Uti != null) ? Uti.getMdp() : "");%>"/></td></tr>
+			<tr><td><input type="password" id="mdp" name="mdp" value="<%out.print((Uti != null) ? Uti.getMdp() : "");%>"/></td></tr>
 		
 			<tr><td><label for="vmdp">Validez votre mot de passe : </label></tr>
 			<tr><td><input type="password" id="vmdp" name="vmdp" /></td></tr>
 	
 			<tr><td class="label"><label for="mail">E-mail : </label></td></tr>
-			<tr><td><input type="text" id="mail" name="mail" value="<%out.println((Uti != null) ? Uti.getEmail() : "");%>"/></td></tr>
+			<tr><td><input type="text" id="mail" name="mail" value="<%out.print((Uti != null) ? Uti.getEmail() : "");%>"/></td></tr>
 		
 			<tr><td class="label"><input type="submit" name="inscription" value="inscription" /></td></tr>
 		</table>

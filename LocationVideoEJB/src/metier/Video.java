@@ -18,11 +18,9 @@ public class Video implements Serializable
 	private int id;
 	private String nom;
 	private String description;
-	private float noteMoyen;
-	private Date dateCreation;
-	private String userCreation;
 	private Categorie categorie;
 	private Set<Support> supports;
+	private String image;
 
 	public Video()
 	{
@@ -60,35 +58,6 @@ public class Video implements Serializable
 		this.description = desc; 
 	}
 	
-	public float getNoteMoyen() 
-	{ 
-		return noteMoyen;
-	}
-	
-	public void setNoteMoyen(float note) 
-	{
-		this.noteMoyen = note; 
-	}
-	
-	public Date getDateCreation() 
-	{
-		return this.dateCreation; 
-	}
-	
-	public void setDateCreation(Date dateCre) 
-	{
-		this.dateCreation = dateCre; 
-	}
-	
-	public String getUserCreation() 
-	{
-		return this.userCreation; 
-	}
-	
-	public void setUserCreation(String userCre) 
-	{
-		this.userCreation = userCre; 
-	}
 	
 	@ManyToOne
 	public Categorie getCategorie()
@@ -110,6 +79,14 @@ public class Video implements Serializable
 	public void setSupports(Set<Support> supports)
 	{
 		this.supports = supports;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 	
 }

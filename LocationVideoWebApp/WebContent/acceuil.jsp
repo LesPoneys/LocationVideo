@@ -6,12 +6,15 @@
 <%@ page import="bean.LocVideoBean"%>
 <%@ page import="java.util.List"%>
 <%@ page import="java.util.Collections"%>
-<%@ page import="java.util.Comparator"%>    
+<%@ page import="java.util.Comparator"%>
+<%@ page import="java.util.Iterator"%>
+<%@ page import="metier.Support"%>          
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ACCEUIL</title>
+ <link rel="stylesheet" media="screen" href="STYLE/CSS/style.css">
 <%
 if (request.getAttribute("uti") == null)
 {
@@ -21,9 +24,18 @@ if (request.getAttribute("uti") == null)
 
 </head>
 <body>
+<div id="header">
+		<h1><% out.print("Poney Vidéos");%></h1>
+		<h2><% out.print("Les vidéos qui envoient du poneys");%></h2>
+	</div>
+
+<div id="titre">
+	<h1><img src="STYLE/images/icone-connexion.png" />Acceuil</h1>
+</div>
+<div id="conteneur">
 <p><b><%
 	Utilisateur Uti = (Utilisateur)request.getAttribute("uti");
-	out.println(Uti.getLogin()+"<br>");
+	out.print(Uti.getLogin()+"<br>");
 	
 	List<Video> mesVideo = LocVideoBean.getInstance().getVideos();
 	Collections.sort(mesVideo, new Comparator<Video>()
@@ -33,14 +45,31 @@ if (request.getAttribute("uti") == null)
 			return first.getNom().compareToIgnoreCase(second.getNom());
 		}
 	});
-	
-	for(int i =0; i< mesVideo.size(); i++)
+%>	<table>
+<% for(int i =0; i< mesVideo.size(); i++)
 	{
 		Video maVideo = mesVideo.get(i);
-		out.println(maVideo.getNom()+" - "+maVideo.getCategorie().getNom()+"<br>");
-		
+%><tr><td><img src="<%out.print(maVideo.getImage()); %>" width=75px height=105px/></td>
+	<td><%out.print(maVideo.getNom()); %></td>
+	<td><%out.print(maVideo.getDescription()); %></td>
+	<td><%out.print(maVideo.getCategorie().getNom()); %></td>
+	<td><%	
+	if(maVideo.getSupports() != null)
+	{
+		String sups = new String();
+		Iterator<Support> it= maVideo.getSupports().iterator();
+		while (it.hasNext()) 
+		{
+			Support sup = (Support) it.next();
+			sups += (sup.getLibelle() + ", ");
+		}
+		out.print(sups);
+	}	
+	 %></td>
+</tr><%		
 	}
-	
+%>	</table>
+<%
 	List<Categorie> mesCat = LocVideoBean.getInstance().getCategories();
 	Collections.sort(mesCat, new Comparator<Categorie>()
 			{
@@ -60,7 +89,7 @@ if (request.getAttribute("uti") == null)
 				String NomCat =maCat.getNom(); 
 			
 	%>
-			<option value="<%out.println(NomCat); %>"><% out.println(NomCat); %></option>
+			<option value="<%out.print(NomCat); %>"><% out.print(NomCat); %></option>
 				
 	<%		}
 	%>
@@ -73,6 +102,6 @@ if (request.getAttribute("uti") == null)
 
 	
 	
-				
+	</div>			
 </body>  
 </html>
