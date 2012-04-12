@@ -22,10 +22,32 @@ if (Uti == null)
 List<Historique> mesVideoLouer ;
 mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
 
-
 %>
 </head>
 <body>
+<div id="header">
+		<h1><% out.print("Poney Vidéos");%></h1>
+		<h2><% out.print("Les vidéos qui envoient du poneys");%></h2>
+</div>
 <p> HISTORIQUEEEE</p>
+<table>
+	<tr>
+		<th>Date</th>
+		<th>Film</th>
+	</tr>
+	<% 
+	for(int i = 0; i < mesVideoLouer.size(); i++)
+	{
+		Historique maVideo = mesVideoLouer.get(i);%>
+		<tr>
+		<td><%out.print(maVideo.getdateVisu()); %></td>
+		<td><a href="detailVideo.html?id=<%out.print(maVideo.getid()); %>" ><%out.print(maVideo.getVideo()); %></a></td>
+	</tr>
+	<% }%>	
+	
+	
+
+
+</table>
 </body>
 </html>
