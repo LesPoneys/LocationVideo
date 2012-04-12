@@ -112,8 +112,8 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 <% for(int i =0; i< mesVideo.size(); i++)
 	{
 		Video maVideo = mesVideo.get(i);
-%><tr><td><a href="detailVideo.jsp" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
-	<td><a href="detailVideo.jsp" ><%out.print(maVideo.getNom()); %></a></td>
+%><tr><td><input type="hidden"  name="maVideo"  value="<%out.print(maVideo); %>"><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
+	<td><%out.print(maVideo.getNom()); %></td>
 	<td><%out.print(maVideo.getDescription()); %></td>
 	<td><%out.print(maVideo.getCategorie().getNom()); %></td>
 	<td><%	
@@ -128,7 +128,7 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 		}
 		out.print(sups);
 	}	
-	 %></td>
+	 %></td><td><input type="submit"></td>
 </tr><%		
 	}
 %>	</table>

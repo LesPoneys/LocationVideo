@@ -129,4 +129,5 @@ public class LocationVideoBean implements ILocationVideoBean
 		
 		return null;
 	}
+
 }

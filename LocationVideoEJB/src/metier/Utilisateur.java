@@ -31,7 +31,7 @@ public class Utilisateur implements Serializable
 		this.nom=_nom;
 		this.prenom=_prenom;
 	}
-	
+
 	@Id @GeneratedValue
 	public int getId() 
 	{ 

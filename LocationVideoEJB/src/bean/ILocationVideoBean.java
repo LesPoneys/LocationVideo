@@ -17,11 +17,13 @@ public interface ILocationVideoBean
 	public void deleteVideo(int id);
 	public List<Video> getVideos();
 	public Video getVideo(int id);
+
 	
 	public Categorie ajoutCategorie(Categorie cat);
 	public void deleteCategorie(int id);
 	public List<Categorie> getCategories();
 	public Categorie getCategorie(int id);
+
 	
 	public Support ajoutSupport(Support sup);
 	public void deleteSupport(int id);
