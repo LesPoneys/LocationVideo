@@ -20,6 +20,8 @@ if (Uti == null)
 
 List<Historique> mesVideoLouer ;
 mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
+List<Video> mesVideo ;
+mesVideo = LocVideoBean.getInstance().getVideos();
 
 %>
 </head>
@@ -28,6 +30,7 @@ mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
 		<h1><% out.print("Poney Vidéos");%></h1>
 		<h2><% out.print("Les vidéos qui envoient du poneys");%></h2>
 </div>
+<div id="conteneur">
 <p> HISTORIQUEEEE</p>
 <table>
 	<tr>
@@ -39,13 +42,16 @@ mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
 	{
 		for(int i = 0; i < mesVideoLouer.size(); i++)
 		{
-			Historique maVideo = mesVideoLouer.get(i);%>
+			Historique maVideoLouer = mesVideoLouer.get(i);
+			Video maVideo = mesVideo.get(i);
+			%>
 			<tr>
-			<td><%out.print(maVideo.getdateVisu()); %></td>
-			<td><a href="detailVideo.html?id=<%out.print(maVideo.getid()); %>" ><%out.print(maVideo.getVideo()); %></a></td>
+			<td><%out.print(maVideoLouer.getdateVisu()); %></td>
+			<td><a href="detailVideo.html?id=<%out.print(maVideoLouer.getid()); %>" ><%out.print(maVideo.getNom()); %></a></td>
 		</tr>
-		<% }	
+	   <%}
 	}%>
+</div>
 </table>
 </body>
 </html>
