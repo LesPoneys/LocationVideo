@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import metier.Categorie;
+import metier.Historique;
 import metier.Support;
 import metier.Utilisateur;
 import metier.Video;
@@ -128,6 +129,17 @@ public class LocationVideoBean implements ILocationVideoBean
 			return (Utilisateur)query.getResultList().get(0);
 		
 		return null;
+	}
+
+	public List<Historique> getHistorique(int id_uti)
+	{
+		String MaClause ="from Historique where utilisateur_id='"+id_uti+"'";
+		System.out.println("MaClause  :"+MaClause);
+		Query query = entityManager.createQuery(MaClause);
+		if (query.getResultList().size() >0)
+			return query.getResultList();
+		
+		return null;	
 	}
 
 }

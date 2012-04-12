@@ -7,6 +7,7 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import metier.Categorie;
+import metier.Historique;
 import metier.Support;
 import metier.Utilisateur;
 import metier.Video;
@@ -129,6 +130,9 @@ public class LocVideoBean
 		return bean.getVideo(id);
 	}
 	
-	
+	public List<Historique> getHistorique(int id_uti)
+	{
+		return bean.getHistorique(id_uti);
+	}
 
 }

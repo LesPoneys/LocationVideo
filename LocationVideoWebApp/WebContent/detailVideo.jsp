@@ -22,7 +22,7 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 	</div>
 
 <div id="titre">
-	<h1><img src="STYLE/images/icone-connexion.png" />Acceuil</h1>
+	<h1><img src="STYLE/images/icone-connexion.png" /><% out.print(maVideo.getNom());%></h1>
 </div>
 
 <div id="conteneur">
