@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import metier.Utilisateur;
 import bean.LocVideoBean;
 
@@ -45,7 +47,8 @@ public class inscription extends HttpServlet {
 		if(chercherErreur(request, response)==false)
 		{
 			Utilisateur Uti = this.inscrire(request); 
-			request.setAttribute("uti", Uti);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uti", Uti);
 			redirectTo(request, response, "acceuil.jsp");
 		}
 		
@@ -94,7 +97,8 @@ public class inscription extends HttpServlet {
 			request.setAttribute("erreur", "champ vide");
 			Utilisateur Uti = this.getCurrentUtilisateur(request);
 			Uti.setMdp("");
-			request.setAttribute("uti", Uti);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uti", Uti);
 			redirectTo(request, response, "inscription.jsp");
 			return true;
 			
@@ -106,7 +110,8 @@ public class inscription extends HttpServlet {
 			Utilisateur Uti = this.getCurrentUtilisateur(request);
 			Uti.setMdp("");
 			Uti.setLogin("");
-			request.setAttribute("uti", Uti);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uti", Uti);
 			redirectTo(request, response, "inscription.jsp");
 			return true;
 		}
@@ -116,7 +121,8 @@ public class inscription extends HttpServlet {
 			request.setAttribute("erreur", "mdp");
 			Utilisateur Uti = this.getCurrentUtilisateur(request);
 			Uti.setMdp("");
-			request.setAttribute("uti", Uti);
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uti", Uti);
 			redirectTo(request, response, "inscription.jsp");
 			return true;
 		}

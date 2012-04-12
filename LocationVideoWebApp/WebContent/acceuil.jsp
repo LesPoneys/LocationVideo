@@ -18,15 +18,12 @@
 <title>ACCEUIL</title>
  <link rel="stylesheet" media="screen" href="STYLE/CSS/styleAcceuil.css">
 <%
-Utilisateur Uti=null ;
-if (session.getAttribute("uti") == null)
+Utilisateur Uti = (Utilisateur)session.getAttribute("uti") ;
+if (Uti == null)
 {
 	%> <meta http-equiv="Refresh" content="0;url=/LocationVideoWebApp/connexion"> <%
 }
-else
-{
-	Uti = (Utilisateur)session.getAttribute("uti");
-}
+
 List<Video> mesVideo ;
 mesVideo = LocVideoBean.getInstance().getVideos();
 String maCat = request.getParameter("trie");
@@ -107,13 +104,12 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 	});
 	
 %>
-<form name="detailVideo" action="detailVideo.jsp" method="post">	
 <table>
 <% for(int i =0; i< mesVideo.size(); i++)
 	{
 		Video maVideo = mesVideo.get(i);
-%><tr><td><input type="hidden"  name="maVideo"  value="<%out.print(maVideo); %>"><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
-	<td><%out.print(maVideo.getNom()); %></td>
+%><tr><td><a href="detailVideo.jsp?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
+	<td><a href="detailVideo.jsp?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></td>
 	<td><%out.print(maVideo.getDescription()); %></td>
 	<td><%out.print(maVideo.getCategorie().getNom()); %></td>
 	<td><%	
@@ -128,11 +124,10 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 		}
 		out.print(sups);
 	}	
-	 %></td><td><input type="submit"></td>
+	 %></td>
 </tr><%		
 	}
 %>	</table>
-	</form>
 <br>
 <br>
 	
