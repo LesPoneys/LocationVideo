@@ -123,6 +123,11 @@ public class LocVideoBean
 	{
 		return bean.IdentificationUtilisateur(Login,  Mdp);
 	}
+
+	public Video getVideo(int id)
+	{
+		return bean.getVideo(id);
+	}
 	
 	
 
