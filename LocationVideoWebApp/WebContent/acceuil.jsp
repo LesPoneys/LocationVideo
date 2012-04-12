@@ -48,10 +48,19 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 	<h1><img src="STYLE/images/icone-connexion.png" />Acceuil</h1>
 </div>
 <div id="utilisateur">
+	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
+	<!-- trouver un moyen de mettre mon panier (liste des film sélectionné) -->
 </div>
 
 <div id="menu">
-	<form name="connexion" action="acceuil.html" method="post">
+	<table>
+	<tr>
+		<a href="historique.html" >Mon Historique</a><br>
+		<a href="index.html" >Déconnexion</a><br>
+	</tr>
+	<tr>
+	<p> Trier :<br></p>
+	<form name="connexion" action="acceuil.jsp" method="post">
 		<table><tr>
 	<%
 	List<Categorie> mesCat = LocVideoBean.getInstance().getCategories();
@@ -86,14 +95,15 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 	</tr><tr><input type="submit" name="Valider" value="Valider"/></tr>
 	</table>
 	</form>
-
+	</tr>
+	</table>
 </div>
 
 <div id="conteneur">
 <p><b><%
 	 
 	//(Utilisateur)request.getAttribute("uti");
-	out.print(Uti.getLogin()+"<br>");
+
 	
 	
 	Collections.sort(mesVideo, new Comparator<Video>()
