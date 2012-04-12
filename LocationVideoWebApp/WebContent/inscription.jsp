@@ -22,17 +22,17 @@
 	<h1><img src="STYLE/images/icone-connexion.png" />Inscription</h1>
 </div>
 <%
-Utilisateur Uti=null;
-if (request.getAttribute("uti")!=null)
+Utilisateur Uti = null;
+if (session.getAttribute("uti") != null)
 {
-	Uti = (Utilisateur)request.getAttribute("uti");
+	Uti = (Utilisateur)session.getAttribute("uti");
 }
 
 
 %>
 <div id="conteneur">
 
-	<form name="firstForm" action="inscription.do" method="post">
+	<form name="firstForm" action="inscription.html" method="post">
 		<table>
 		<tr><td><label><%if (request.getAttribute("erreur")=="login") 
 				out.print("Login déja utilisé ");%></label></td></tr>

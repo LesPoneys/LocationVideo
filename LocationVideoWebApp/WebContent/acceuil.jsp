@@ -21,7 +21,7 @@
 Utilisateur Uti = (Utilisateur)session.getAttribute("uti") ;
 if (Uti == null)
 {
-	%> <meta http-equiv="Refresh" content="0;url=/LocationVideoWebApp/connexion"> <%
+	%> <jsp:forward page="/connexion.html" />  <%
 }
 
 List<Video> mesVideo ;
@@ -51,7 +51,7 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 </div>
 
 <div id="menu">
-	<form name="connexion" action="acceuil.jsp" method="post">
+	<form name="connexion" action="acceuil.html" method="post">
 		<table><tr>
 	<%
 	List<Categorie> mesCat = LocVideoBean.getInstance().getCategories();
@@ -65,6 +65,7 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 	
 	%>
 	<select name="trie">
+	<option value="Toutes les catégories">Toutes les catégories</option>
 	<%
 	for(int i =0; i< mesCat.size(); i++)
 		{
@@ -108,8 +109,8 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 <% for(int i =0; i< mesVideo.size(); i++)
 	{
 		Video maVideo = mesVideo.get(i);
-%><tr><td><a href="detailVideo.jsp?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
-	<td><a href="detailVideo.jsp?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></td>
+%><tr><td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
+	<td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></td>
 	<td><%out.print(maVideo.getDescription()); %></td>
 	<td><%out.print(maVideo.getCategorie().getNom()); %></td>
 	<td><%	

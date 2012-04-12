@@ -23,7 +23,7 @@
 		
 			
 		<div id="conteneur">
-			<form name="connexion" action="connect.do" method="post">
+			<form name="connexion" action="connexion.html" method="post">
 				<table>
 					<tr><td><label ><%if (request.getAttribute("statut")=="ECHEC") 
 				out.print("Login , Mot de passe inconnue ");%></label></td></tr>
@@ -37,7 +37,7 @@
 					<tr><td class="label"><input type="submit" name="envoyer" value="connexion" /></td></tr>
 				</table>
 			</form>
-			<p><a href="inscription.jsp" ><% out.print("Pas encore inscrit ? S'inscrire"); %></a></p>
+			<p><a href="inscription.html" ><% out.print("Pas encore inscrit ? S'inscrire"); %></a></p>
 		</div>
 	
 		

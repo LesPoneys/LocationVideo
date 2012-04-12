@@ -1,11 +1,8 @@
-package servlet;
+package controller;
 
 import java.io.IOException;
-import java.util.List;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -13,21 +10,29 @@ import javax.servlet.http.HttpSession;
 import metier.Utilisateur;
 import bean.LocVideoBean;
 
-/**
- * Servlet implementation class Inscription
- */
-public class inscription extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public inscription() {
-        super();
-    }
-    
-    
-    public Utilisateur inscrire (HttpServletRequest request)
+public class InscriptionController extends Controller {
+
+	public InscriptionController(HttpServletRequest request, HttpServletResponse response)
+	{
+		super(request, response);
+	}
+	
+	public void process() throws ServletException, IOException
+	{
+		if(request.getParameter("login") == null)
+		{
+			dispatch("inscription.jsp");
+		}
+		else if(chercherErreur(request, response)==false)
+		{
+			Utilisateur Uti = this.inscrire(request); 
+			HttpSession session = request.getSession(true);
+			session.setAttribute("uti", Uti);
+			dispatch("acceuil.html");
+		}
+	}
+	
+	public Utilisateur inscrire (HttpServletRequest request)
     {
     	Utilisateur Uti = getCurrentUtilisateur(request);
     	return LocVideoBean.getInstance().ajoutUtilisateur(Uti);
@@ -39,28 +44,7 @@ public class inscription extends HttpServlet {
     	Utilisateur Uti = new Utilisateur(request.getParameter("login"),request.getParameter("mdp"),request.getParameter("nom"),request.getParameter("prenom"),request.getParameter("mail"));
     	return Uti;
     }
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		if(chercherErreur(request, response)==false)
-		{
-			Utilisateur Uti = this.inscrire(request); 
-			HttpSession session = request.getSession(true);
-			session.setAttribute("uti", Uti);
-			redirectTo(request, response, "acceuil.jsp");
-		}
-		
-	}
-
-
-	private void redirectTo(HttpServletRequest request,
-			HttpServletResponse response, String MaJSP) throws ServletException, IOException {
-		RequestDispatcher dispatch = request.getRequestDispatcher(MaJSP);
-		dispatch.forward(request, response);
-	}
-	
 	public boolean checkExistenceLogin(String login)
 	{
 		Utilisateur MonUti = LocVideoBean.getInstance().getUtilisateurbyLogin(login);
@@ -99,7 +83,7 @@ public class inscription extends HttpServlet {
 			Uti.setMdp("");
 			HttpSession session = request.getSession(true);
 			session.setAttribute("uti", Uti);
-			redirectTo(request, response, "inscription.jsp");
+			dispatch("inscription.jsp");
 			return true;
 			
 		}
@@ -112,7 +96,7 @@ public class inscription extends HttpServlet {
 			Uti.setLogin("");
 			HttpSession session = request.getSession(true);
 			session.setAttribute("uti", Uti);
-			redirectTo(request, response, "inscription.jsp");
+			dispatch("inscription.jsp");
 			return true;
 		}
 		
@@ -123,17 +107,9 @@ public class inscription extends HttpServlet {
 			Uti.setMdp("");
 			HttpSession session = request.getSession(true);
 			session.setAttribute("uti", Uti);
-			redirectTo(request, response, "inscription.jsp");
+			dispatch("inscription.jsp");
 			return true;
 		}
 		return false;
 	}
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
