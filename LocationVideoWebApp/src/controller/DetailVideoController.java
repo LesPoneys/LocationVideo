@@ -17,5 +17,4 @@ public class DetailVideoController extends Controller {
 	{
 			dispatch("detailVideo.jsp");
 	}
-
 }

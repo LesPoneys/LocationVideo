@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.AcceuilController;
 import controller.DetailVideoController;
+import controller.HistoriqueController;
 import controller.IndexController;
 import controller.ConnexionController;
 import controller.InscriptionController;
@@ -59,6 +60,11 @@ public class ServletDispatcher extends HttpServlet {
 		{
 			DetailVideoController detailVideo = new DetailVideoController(request, response);
 			detailVideo.process();
+		}
+		else if(path.equals("/historique.html"))
+		{
+			HistoriqueController historique = new HistoriqueController(request, response);
+			historique.process();
 		}
 	}
 
