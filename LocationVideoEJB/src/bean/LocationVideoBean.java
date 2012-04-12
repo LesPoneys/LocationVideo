@@ -42,6 +42,13 @@ public class LocationVideoBean implements ILocationVideoBean
 		return entityManager.find(Video.class, id);
 	}
 	
+	@Override
+	public List<Video> getVideosByCategorie(int idCat)
+	{
+		Query query = entityManager.createQuery("from Video where categorie = '" + idCat + "'");
+		return query.getResultList() ;
+	}
+	
 	public Categorie ajoutCategorie(Categorie cat)
 	{
 		entityManager.persist(cat);
@@ -141,5 +148,7 @@ public class LocationVideoBean implements ILocationVideoBean
 		
 		return null;	
 	}
+
+
 
 }

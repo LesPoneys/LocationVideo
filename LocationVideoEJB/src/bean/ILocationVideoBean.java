@@ -3,7 +3,6 @@ package bean;
 import java.util.List;
 
 import javax.ejb.Remote;
-import javax.persistence.Query;
 
 import metier.Categorie;
 import metier.Historique;
@@ -39,4 +38,5 @@ public interface ILocationVideoBean
 	public Utilisateur IdentificationUtilisateur(String login, String mdp);
 	
 	public List<Historique> getHistorique(int id_uti);
+	public List<Video> getVideosByCategorie(int idCat);
 }

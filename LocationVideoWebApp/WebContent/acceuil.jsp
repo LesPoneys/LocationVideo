@@ -9,7 +9,6 @@
 <%@ page import="java.util.Comparator"%>
 <%@ page import="java.util.Iterator"%>
 <%@ page import="metier.Support"%>     
-<%@ page import="helper.TriParCategorie"%> 
            
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -24,19 +23,7 @@ if (Uti == null)
 	%> <jsp:forward page="/connexion.html" />  <%
 }
 
-List<Video> mesVideo ;
-mesVideo = LocVideoBean.getInstance().getVideos();
-String maCat = request.getParameter("trie");
-if ( maCat==null || maCat.isEmpty() )
-{
-	maCat ="Toutes les catégories";
-}
-TriParCategorie leTri = new TriParCategorie();
-mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
-
-
 %>
-
 </head>
 <body>
 <div id="header">
@@ -60,22 +47,15 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 	</tr>
 	<tr>
 	<p> Trier :<br></p>
-	<form name="connexion" action="acceuil.jsp" method="post">
+	<form name="connexion" action="acceuil.html" method="post">
 		<table><tr>
-	<%
-	List<Categorie> mesCat = LocVideoBean.getInstance().getCategories();
-	Collections.sort(mesCat, new Comparator<Categorie>()
-			{
-				public int compare(Categorie first, Categorie second)
-				{
-					return first.getNom().compareToIgnoreCase(second.getNom());
-				}
-			});
-	
-	%>
+
 	<select name="trie">
 	<option value="Toutes les catégories">Toutes les catégories</option>
 	<%
+	List<Categorie> mesCat = (List<Categorie>)request.getAttribute("cats");
+	String maCat = (String)request.getAttribute("trie");
+	
 	for(int i =0; i< mesCat.size(); i++)
 		{
 			Categorie cat = mesCat.get(i);
@@ -100,23 +80,13 @@ mesVideo = leTri.getVideosWithCategorie(maCat, mesVideo);
 </div>
 
 <div id="conteneur">
-<p><b><%
-	 
-	//(Utilisateur)request.getAttribute("uti");
-
-	
-	
-	Collections.sort(mesVideo, new Comparator<Video>()
-	{
-		public int compare(Video first, Video second)
-		{
-			return first.getNom().compareToIgnoreCase(second.getNom());
-		}
-	});
-	
-%>
+<p><b>
 <table>
-<% for(int i =0; i< mesVideo.size(); i++)
+
+<% 
+List<Video> mesVideo = (List<Video>)request.getAttribute("videos");
+
+for(int i =0; i< mesVideo.size(); i++)
 	{
 		Video maVideo = mesVideo.get(i);
 %><tr><td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>

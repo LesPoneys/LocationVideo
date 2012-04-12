@@ -135,4 +135,9 @@ public class LocVideoBean
 		return bean.getHistorique(id_uti);
 	}
 
+	public List<Video> getVideosByCategorie(int idCat)
+	{
+		return bean.getVideosByCategorie(idCat);
+	}
+
 }
