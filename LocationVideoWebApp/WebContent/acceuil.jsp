@@ -55,8 +55,9 @@ if (Uti == null)
 	<%
 	List<Categorie> mesCat = (List<Categorie>)request.getAttribute("cats");
 	String maCat = (String)request.getAttribute("trie");
-	
-	for(int i =0; i< mesCat.size(); i++)
+	if(mesCat != null)
+	{
+		for(int i =0; i< mesCat.size(); i++)
 		{
 			Categorie cat = mesCat.get(i);
 			String NomCat =cat.getNom(); 
@@ -69,7 +70,9 @@ if (Uti == null)
 		%>	<option value="<%out.print(NomCat); %>"><% out.print(NomCat); %></option> <%
 			}	
 		}
+	}
 	%>
+	
 	</select> 
 	 
 	</tr><tr><input type="submit" name="Valider" value="Valider"/></tr>
@@ -85,34 +88,33 @@ if (Uti == null)
 
 <% 
 List<Video> mesVideo = (List<Video>)request.getAttribute("videos");
-
-for(int i =0; i< mesVideo.size(); i++)
+if(mesVideo != null)
+{
+	for(int i =0; i< mesVideo.size(); i++)
 	{
-		Video maVideo = mesVideo.get(i);
-%><tr><td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
-	<td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></td>
-	<td><%out.print(maVideo.getDescription()); %></td>
-	<td><%out.print(maVideo.getCategorie().getNom()); %></td>
-	<td><%	
-	if(maVideo.getSupports() != null)
-	{
-		String sups = new String();
-		Iterator<Support> it= maVideo.getSupports().iterator();
-		while (it.hasNext()) 
+		Video maVideo = mesVideo.get(i);%>
+		<tr><td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
+		<td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></td>
+		<td><%out.print(maVideo.getDescription()); %></td>
+		<td><%out.print(maVideo.getCategorie().getNom()); %></td>
+		<td><%	
+		if(maVideo.getSupports() != null)
 		{
-			Support sup = (Support) it.next();
-			sups += (sup.getLibelle() + ", ");
-		}
-		out.print(sups);
-	}	
-	 %></td>
-</tr><%		
+			String sups = new String();
+			Iterator<Support> it= maVideo.getSupports().iterator();
+			while (it.hasNext()) 
+			{
+				Support sup = (Support) it.next();
+				sups += (sup.getLibelle() + ", ");
+			}
+			out.print(sups);
+		}%></td></tr>
+		<%		
 	}
-%>	</table>
+}%>	
+</table>
 <br>
 <br>
-	
-	
 	</div>			
 </body>  
 </html>

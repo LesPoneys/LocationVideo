@@ -13,7 +13,6 @@
 <link rel="stylesheet" media="screen" href="STYLE/CSS/style.css">
 <%
 Utilisateur Uti = (Utilisateur)session.getAttribute("uti");
-System.out.print("mon Uti  : "+ Uti.getId());
 if (Uti == null)
 {
 	%> <jsp:forward page="/connexion.html" /> <%
@@ -36,18 +35,17 @@ mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
 		<th>Film</th>
 	</tr>
 	<% 
-	for(int i = 0; i < mesVideoLouer.size(); i++)
+	if(mesVideoLouer != null)
 	{
-		Historique maVideo = mesVideoLouer.get(i);%>
-		<tr>
-		<td><%out.print(maVideo.getdateVisu()); %></td>
-		<td><a href="detailVideo.html?id=<%out.print(maVideo.getid()); %>" ><%out.print(maVideo.getVideo()); %></a></td>
-	</tr>
-	<% }%>	
-	
-	
-
-
+		for(int i = 0; i < mesVideoLouer.size(); i++)
+		{
+			Historique maVideo = mesVideoLouer.get(i);%>
+			<tr>
+			<td><%out.print(maVideo.getdateVisu()); %></td>
+			<td><a href="detailVideo.html?id=<%out.print(maVideo.getid()); %>" ><%out.print(maVideo.getVideo()); %></a></td>
+		</tr>
+		<% }	
+	}%>
 </table>
 </body>
 </html>
