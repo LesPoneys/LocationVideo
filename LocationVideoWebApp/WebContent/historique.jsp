@@ -31,8 +31,8 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 		<h2><% out.print("Les vidéos qui envoient du poneys");%></h2>
 </div>
 <div id="conteneur">
-<p> HISTORIQUEEEE</p>
-<table>
+<p> HISTORIQUE DES VIDÉOS LOUÉES</p>
+<table id="historique">
 	<tr>
 		<th>Date</th>
 		<th>Film</th>
@@ -51,7 +51,8 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 		</tr>
 	   <%}
 	}%>
-</div>
+
 </table>
+</div>
 </body>
 </html>
