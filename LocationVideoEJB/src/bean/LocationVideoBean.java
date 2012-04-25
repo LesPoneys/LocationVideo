@@ -148,6 +148,12 @@ public class LocationVideoBean implements ILocationVideoBean
 		
 		return null;	
 	}
+	
+	public Historique ajoutHistorique(Historique hist)
+	{
+			entityManager.persist(hist);
+			return hist;
+	}
 
 
 

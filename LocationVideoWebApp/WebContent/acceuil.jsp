@@ -15,7 +15,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>ACCEUIL</title>
- <link rel="stylesheet" media="screen" href="STYLE/CSS/styleAcceuil.css">
+ <link rel="stylesheet" media="screen" href="STYLE/CSS/styleConnected.css">
 <%
 Utilisateur Uti = (Utilisateur)session.getAttribute("uti") ;
 if (Uti == null)
@@ -34,21 +34,13 @@ if (Uti == null)
 <div id="titre">
 	<h1><img src="STYLE/images/icone-connexion.png" />Acceuil</h1>
 </div>
-<div id="utilisateur">
-	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
-	<!-- trouver un moyen de mettre mon panier (liste des film sélectionné) -->
-</div>
 
 <div id="menu">
-	<table>
-	<tr>
-		<a href="historique.html" >Mon Historique</a><br>
-		<a href="deconnexion.html" >Déconnexion</a><br>
-	</tr>
-	<tr>
-	<p> Trier :<br></p>
+	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
+	<p><a href="historique.html" >Mon Historique</a><br></p>
+	
+	<p>Catégories :</p>
 	<form name="connexion" action="acceuil.html" method="post">
-		<table><tr>
 
 	<select name="trie">
 	<option value="Toutes les catégories">Toutes les catégories</option>
@@ -75,11 +67,11 @@ if (Uti == null)
 	
 	</select> 
 	 
-	</tr><tr><input type="submit" name="Valider" value="Valider"/></tr>
-	</table>
+	<input type="submit" name="Valider" value="Valider"/>
+	
 	</form>
-	</tr>
-	</table>
+	
+	<p><a href="deconnexion.html" >Déconnexion</a><br></p>
 </div>
 
 <div id="conteneur">
@@ -96,10 +88,10 @@ if(mesVideo != null && mesVideo.size() > 0)
 	{
 		Video maVideo = mesVideo.get(i);%>
 		<tr><td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
-		<td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></td>
-		<td><%out.print(maVideo.getDescription()); %></td>
-		<td><%out.print(maVideo.getCategorie().getNom()); %></td>
-		<td><%	
+		<td><titrelabel><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></titrelabel><br><br>
+		<label ><%out.print(maVideo.getDescription()); %><br><br>
+		Catégorie : <%out.print(maVideo.getCategorie().getNom()); %><br>
+		Supports : <%
 		if(maVideo.getSupports() != null)
 		{
 			String sups = new String();
@@ -110,7 +102,7 @@ if(mesVideo != null && mesVideo.size() > 0)
 				sups += (sup.getLibelle() + ", ");
 			}
 			out.print(sups);
-		}%></td></tr>
+		}%></label></td></tr><tr></tr>
 		<%		
 	}
 	%></table><%

@@ -37,6 +37,9 @@ public interface ILocationVideoBean
 	public Utilisateur getUtilisateurbyLogin(String login);
 	public Utilisateur IdentificationUtilisateur(String login, String mdp);
 	
+	public Historique ajoutHistorique(Historique hist);
 	public List<Historique> getHistorique(int id_uti);
 	public List<Video> getVideosByCategorie(int idCat);
+	
+	
 }

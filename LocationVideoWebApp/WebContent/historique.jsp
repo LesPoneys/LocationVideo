@@ -10,7 +10,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Historique</title>
-<link rel="stylesheet" media="screen" href="STYLE/CSS/style.css">
+<link rel="stylesheet" media="screen" href="STYLE/CSS/styleConnected.css">
 <%
 Utilisateur Uti = (Utilisateur)session.getAttribute("uti");
 if (Uti == null)
@@ -30,8 +30,20 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 		<h1><% out.print("Poney Vidéos");%></h1>
 		<h2><% out.print("Les vidéos qui envoient du poneys");%></h2>
 </div>
+<div id="titre">
+	<h1><img src="STYLE/images/icone-connexion.png" />Historique</h1>
+</div>
+
+<div id="menu">
+	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
+	<p><a href="acceuil.html" >Acceuil</a><br></p>
+	<p><a href="deconnexion.html" >Déconnexion</a><br></p>
+
+</div>
+
+
 <div id="conteneur">
-<p> HISTORIQUE DES VIDÉOS LOUÉES</p>
+
 	<% 
 	if(mesVideoLouer != null)
 	{
@@ -56,7 +68,7 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 	}
 	else
 	{
-		out.print("Vous n'avez pas encore loué de vidéo");
+		%><p><% out.print("Vous n'avez pas encore loué de vidéo");%></p><%
 	}%>
 
 

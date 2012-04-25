@@ -9,7 +9,7 @@
 	
 	  <title></title>
 		
-	   <link rel="stylesheet" media="screen" type="text/css" title="Exemple" href="./STYLE/CSS/style.css" />
+	   <link rel="stylesheet" media="screen" type="text/css" title="Exemple" href="./STYLE/CSS/styleConnexion.css" />
 	</head>
 	<body>
 	<div id="header">

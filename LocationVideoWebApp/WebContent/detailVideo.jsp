@@ -3,17 +3,26 @@
 <%@ page import="metier.Video"%>
 <%@ page import="bean.LocVideoBean"%>
 <%@ page import="java.util.Iterator"%>
-<%@ page import="metier.Support"%>    
+<%@ page import="metier.Support"%>
+<%@ page import="metier.Utilisateur"%>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<%
+Utilisateur Uti = (Utilisateur)session.getAttribute("uti") ;
+if (Uti == null)
+{
+	%> <jsp:forward page="/connexion.html" />  <%
+}
+
+%>
 <% 
 String idVideo = request.getParameter("id");
 Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 %>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><% out.print(maVideo.getNom());%></title>
-<link rel="stylesheet" media="screen" href="STYLE/CSS/style.css">
+<link rel="stylesheet" media="screen" href="STYLE/CSS/styleConnected.css">
 </head>
 <body>
 <div id="header">
@@ -25,14 +34,22 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 	<h1><img src="STYLE/images/icone-connexion.png" /><% out.print(maVideo.getNom());%></h1>
 </div>
 
+<div id="menu">
+	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
+	<p><a href="acceuil.html" >Acceuil</a><br></p>
+	<p><a href="historique.html" >Mon Historique</a><br></p>
+	<p><a href="deconnexion.html" >Déconnexion</a><br></p>
+
+</div>
+
+
 <div id="conteneur">
-	<form name="connexion" action="acceuil.jsp" method="post">
+	<form name="location" action="location.html?id=<%out.print(maVideo.getId()); %>" method="post">
 	<table><tr>
 			<td><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
-			<td><% out.print(maVideo.getNom());%></td>
-			<td><% out.print(maVideo.getDescription());%></td>
-			<td><% out.print(maVideo.getCategorie().getNom());%></td>
-			<td><%	
+			<td><label><% out.print(maVideo.getDescription());%><br><br>
+			<% out.print(maVideo.getCategorie().getNom());%><br>
+			<%	
 				if(maVideo.getSupports() != null)
 				{
 					String sups = new String();
@@ -44,8 +61,10 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 					}
 					out.print(sups);
 				}	%>
-				</td>
+				</label></td>
 		</tr></table>
+		
+		<input type="submit" name="Louer" value="Valider"/>
 	</form>
 </div>
 </body>

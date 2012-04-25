@@ -14,6 +14,7 @@ import controller.HistoriqueController;
 import controller.IndexController;
 import controller.ConnexionController;
 import controller.InscriptionController;
+import controller.LocationController;
 /**
  * Servlet implementation class ServletDisptcher
  */
@@ -71,6 +72,11 @@ public class ServletDispatcher extends HttpServlet {
 		{
 			DeconnexionController deconnexion = new DeconnexionController(request, response);
 			deconnexion.process();
+		}
+		else if(path.equals("/location.html"))
+		{
+			LocationController location = new LocationController(request, response);
+			location.process();
 		}
 	}
 

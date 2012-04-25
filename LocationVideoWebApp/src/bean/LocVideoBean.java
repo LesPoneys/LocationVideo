@@ -139,5 +139,10 @@ public class LocVideoBean
 	{
 		return bean.getVideosByCategorie(idCat);
 	}
+	
+	public Historique ajoutHistorique(Historique hist)
+	{
+		return bean.ajoutHistorique(hist);
+	}
 
 }

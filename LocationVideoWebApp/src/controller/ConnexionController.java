@@ -43,7 +43,7 @@ public class ConnexionController extends Controller
 		}else
 		{	
 			request.setAttribute("statut", "ECHEC");
-			dispatch("connexion.html");
+			dispatch("connexion.jsp");
 		}  
 	}
 	
