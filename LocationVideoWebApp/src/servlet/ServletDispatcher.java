@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.AcceuilController;
+import controller.DeconnexionController;
 import controller.DetailVideoController;
 import controller.HistoriqueController;
 import controller.IndexController;
@@ -65,6 +66,11 @@ public class ServletDispatcher extends HttpServlet {
 		{
 			HistoriqueController historique = new HistoriqueController(request, response);
 			historique.process();
+		}
+		else if(path.equals("/deconnexion.html"))
+		{
+			DeconnexionController deconnexion = new DeconnexionController(request, response);
+			deconnexion.process();
 		}
 	}
 

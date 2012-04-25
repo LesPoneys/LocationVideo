@@ -26,7 +26,7 @@ public class AcceuilController extends Controller {
 		List<Video> mesVideo = null ;
 		
 		List<Categorie> mesCat = LocVideoBean.getInstance().getCategories();
-		System.out.print("cat : " + mesCat);
+		
 		Collections.sort(mesCat, new Comparator<Categorie>()
 				{
 					public int compare(Categorie first, Categorie second)

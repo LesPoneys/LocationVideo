@@ -43,7 +43,7 @@ if (Uti == null)
 	<table>
 	<tr>
 		<a href="historique.html" >Mon Historique</a><br>
-		<a href="index.html" >Déconnexion</a><br>
+		<a href="deconnexion.html" >Déconnexion</a><br>
 	</tr>
 	<tr>
 	<p> Trier :<br></p>
@@ -84,12 +84,14 @@ if (Uti == null)
 
 <div id="conteneur">
 <p><b>
-<table>
 
 <% 
 List<Video> mesVideo = (List<Video>)request.getAttribute("videos");
-if(mesVideo != null)
+if(mesVideo != null && mesVideo.size() > 0)
 {
+	%>
+	<table>
+	<%
 	for(int i =0; i< mesVideo.size(); i++)
 	{
 		Video maVideo = mesVideo.get(i);%>
@@ -111,8 +113,12 @@ if(mesVideo != null)
 		}%></td></tr>
 		<%		
 	}
+	%></table><%
+}
+else
+{
+	out.print("Aucune vidéo trouvée");
 }%>	
-</table>
 <br>
 <br>
 	</div>			

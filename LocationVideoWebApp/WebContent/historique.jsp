@@ -32,14 +32,16 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 </div>
 <div id="conteneur">
 <p> HISTORIQUE DES VIDÉOS LOUÉES</p>
-<table id="historique">
-	<tr>
-		<th>Date</th>
-		<th>Film</th>
-	</tr>
 	<% 
 	if(mesVideoLouer != null)
 	{
+		%>
+		<table id="historique">
+		<tr>
+			<th>Date</th>
+			<th>Film</th>
+		</tr>
+		<%
 		for(int i = 0; i < mesVideoLouer.size(); i++)
 		{
 			Historique maVideoLouer = mesVideoLouer.get(i);
@@ -50,9 +52,14 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 			<td><a href="detailVideo.html?id=<%out.print(maVideoLouer.getid()); %>" ><%out.print(maVideo.getNom()); %></a></td>
 		</tr>
 	   <%}
+		%></table><%
+	}
+	else
+	{
+		out.print("Vous n'avez pas encore loué de vidéo");
 	}%>
 
-</table>
+
 </div>
 </body>
 </html>
