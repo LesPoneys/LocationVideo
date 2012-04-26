@@ -50,8 +50,8 @@ a:visited{ color: inherit; }
 #conteneur titrelabel{ width: 150px; color: #DDDDDD; font-size: 18px; text-decoration:underline;}
 #conteneur label{ width: 150px; color: #DDDDDD; font-size: 14px; }
 #conteneur input[type="text"], input[type="password"]{ opacity: 1;width: 100%; font-size: 16px; padding-left: 15px; color: #AAAAAA; height: 40px; background: #EEEEEE; border: 4px solid #3299CC; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
-#conteneur input[type="submit"]{ width: 83%; font-family: inherit; 
-margin-left: 10%; height: 40px; border: 3px solid #116699; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; 
+#conteneur input[type="submit"]{ width: 100px; font-family: inherit; 
+margin-left: 2%; height: 40px; border: 3px solid #116699; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px; 
 	background: -moz-linear-gradient(top, #3299CC, #116699);
 	background: -webkit-linear-gradient(top, #3299CC, #116699);
 	background: -ms-linear-gradient(top, #3299CC, #116699);
@@ -64,6 +64,9 @@ margin-left: 10%; height: 40px; border: 3px solid #116699; -webkit-border-radius
 #conteneur .label{ padding-top: 30px; }
 
 #conteneur p{ text-align: center; color: #DDDDDD; }
+
+#historique {margin-left: 1%;width: 98%;}
+#historique td {vertical-align:middle; padding-bottom : 15px;}
 
 #titre{ margin-left: 5%; margin-top :2% ; border: 1px solid black; background: white; width: 90%; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
 #titre h1{ margin: 0; margin-bottom: 10px; font-family: Consolas;}

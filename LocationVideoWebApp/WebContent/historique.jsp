@@ -5,6 +5,8 @@
 <%@ page import="java.util.List"%>
 <%@ page import="metier.Video"%>
 <%@ page import="metier.Historique"%>
+<%@ page import="java.util.Collections"%>
+<%@ page import="java.util.Comparator"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,8 +22,14 @@ if (Uti == null)
 
 List<Historique> mesVideoLouer ;
 mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
-List<Video> mesVideo ;
-mesVideo = LocVideoBean.getInstance().getVideos();
+
+Collections.sort(mesVideoLouer, new Comparator<Historique>()
+		{
+			public int compare(Historique first, Historique second)
+			{
+				return second.getdateVisu().compareTo(first.getdateVisu());
+			}
+		});
 
 %>
 </head>
@@ -50,18 +58,20 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 		%>
 		<table id="historique">
 		<tr>
-			<th>Date</th>
-			<th>Film</th>
+			<th align="left"><label>Affiche</label></th>
+			<th align="left"><label>Film</label></th>
+			<th align="left"><label>Date</label></th>
 		</tr>
 		<%
 		for(int i = 0; i < mesVideoLouer.size(); i++)
 		{
 			Historique maVideoLouer = mesVideoLouer.get(i);
-			Video maVideo = mesVideo.get(i);
+			Video maVideo = maVideoLouer.getVideo();
 			%>
 			<tr>
-			<td><%out.print(maVideoLouer.getdateVisu()); %></td>
-			<td><a href="detailVideo.html?id=<%out.print(maVideoLouer.getid()); %>" ><%out.print(maVideo.getNom()); %></a></td>
+			<td width = 77px><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=75px height=105px/></a></td>
+			<td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><label><%out.print(maVideo.getNom()); %></label></a></td>
+			<td><label><%out.print(maVideoLouer.getdateVisu()); %></label></td>
 		</tr>
 	   <%}
 		%></table><%
@@ -70,7 +80,6 @@ mesVideo = LocVideoBean.getInstance().getVideos();
 	{
 		%><p><% out.print("Vous n'avez pas encore loué de vidéo");%></p><%
 	}%>
-
 
 </div>
 </body>

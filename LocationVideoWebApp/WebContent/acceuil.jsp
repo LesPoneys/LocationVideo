@@ -79,15 +79,17 @@ if (Uti == null)
 
 <% 
 List<Video> mesVideo = (List<Video>)request.getAttribute("videos");
+if(request.getAttribute("location") != null)
+{
+	out.print("Confirmation de la réservation de " + request.getAttribute("location"));
+}
 if(mesVideo != null && mesVideo.size() > 0)
 {
-	%>
-	<table>
-	<%
+	%><table><%
 	for(int i =0; i< mesVideo.size(); i++)
 	{
 		Video maVideo = mesVideo.get(i);%>
-		<tr><td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
+		<tr><td width = 152px><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></a></td>
 		<td><titrelabel><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><%out.print(maVideo.getNom()); %></a></titrelabel><br><br>
 		<label ><%out.print(maVideo.getDescription()); %><br><br>
 		Catégorie : <%out.print(maVideo.getCategorie().getNom()); %><br>
@@ -111,8 +113,7 @@ else
 {
 	out.print("Aucune vidéo trouvée");
 }%>	
-<br>
-<br>
-	</div>			
+
+</div>			
 </body>  
 </html>

@@ -46,25 +46,25 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 <div id="conteneur">
 	<form name="location" action="location.html?id=<%out.print(maVideo.getId()); %>" method="post">
 	<table><tr>
-			<td><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
+			<td width = 152px><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
 			<td><label><% out.print(maVideo.getDescription());%><br><br>
-			<% out.print(maVideo.getCategorie().getNom());%><br>
+			Catégorie : <% out.print(maVideo.getCategorie().getNom());%><br>
+			Supports : 
+			<select name="support">
 			<%	
 				if(maVideo.getSupports() != null)
 				{
-					String sups = new String();
 					Iterator<Support> it= maVideo.getSupports().iterator();
 					while (it.hasNext()) 
 					{
 						Support sup = (Support) it.next();
-						sups += (sup.getLibelle() + ", ");
+						%><option value="<%out.print(sup.getLibelle()); %>"><%out.print(sup.getLibelle()); %></option><%
 					}
-					out.print(sups);
 				}	%>
-				</label></td>
+			</select>
+			<input type="submit" name="Louer" value="Réserver"/>
+			</label></td>
 		</tr></table>
-		
-		<input type="submit" name="Louer" value="Valider"/>
 	</form>
 </div>
 </body>

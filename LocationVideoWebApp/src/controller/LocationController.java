@@ -40,6 +40,8 @@ public class LocationController extends Controller {
 			
 			LocVideoBean.getInstance().ajoutHistorique(historique);
 			
+			request.setAttribute("location", maVideo.getNom());
+			
 			dispatch("acceuil.html");
 		}
 		else
