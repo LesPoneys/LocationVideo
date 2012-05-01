@@ -43,7 +43,7 @@ if (Uti == null)
 	<p>Catégories :</p>
 	<form name="connexion" action="acceuil.html" method="post">
 
-	<select name="trie">
+	<select name="catégorie">
 	<option value="Toutes les catégories">Toutes les catégories</option>
 	<%
 	List<Categorie> mesCat = (List<Categorie>)request.getAttribute("cats");
@@ -67,7 +67,17 @@ if (Uti == null)
 	%>
 	
 	</select> 
-	 
+	
+	<p>Trie :</p>
+	<form name="connexion" action="acceuil.html" method="post">
+
+	<select name="trie">
+		<option selected value="az">A-Z</option>
+		<option value="za">Z-A</option>
+		<option value="pcroissant">Prix croissant</option>
+		<option value="pdecroissant">Prix décroissant</option>
+	</select> 
+			 
 	<input type="submit" name="Valider" value="Valider"/>
 	
 	</form>
@@ -105,7 +115,10 @@ if(mesVideo != null && mesVideo.size() > 0)
 				sups += (sup.getLibelle() + ", ");
 			}
 			out.print(sups);
-		}%></label></td></tr><tr></tr>
+		}%>
+		<br><br>
+		Prix :  <%out.print(maVideo.getPrix()); %> euros <br>
+		</label></td></tr><tr></tr>
 		<%		
 	}
 	%></table><%

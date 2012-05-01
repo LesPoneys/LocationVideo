@@ -27,24 +27,24 @@ public class AcceuilController extends Controller {
 		
 		List<Categorie> mesCat = LocVideoBean.getInstance().getCategories();
 		
-		Collections.sort(mesCat, new Comparator<Categorie>()
+			Collections.sort(mesCat, new Comparator<Categorie>()
 				{
 					public int compare(Categorie first, Categorie second)
 					{
 						return first.getNom().compareToIgnoreCase(second.getNom());
 					}
 				});
-	   
+			   
 		request.setAttribute("cats", mesCat);
 		
-		String maCat = request.getParameter("trie");
+		String maCat = request.getParameter("catégorie");
 		
 		if ( maCat==null || maCat.isEmpty() )
 		{
 			maCat = "Toutes les catégories";
 		}
 		
-		request.setAttribute("trie", maCat);
+		request.setAttribute("catégorie", maCat);
 		
 		if(maCat.equals("Toutes les catégories"))
 		{
@@ -62,15 +62,49 @@ public class AcceuilController extends Controller {
 				}
 			}
 		}
-		System.out.print("video : " + mesVideo);
 		
-		Collections.sort(mesVideo, new Comparator<Video>()
+		//System.out.print("video : " + mesVideo);
+		String monTri = request.getParameter("trie");
+		if (monTri == null || monTri.equals("az"))
+		{
+			Collections.sort(mesVideo, new Comparator<Video>()
 				{
 					public int compare(Video first, Video second)
 					{
 						return first.getNom().compareToIgnoreCase(second.getNom());
 					}
 				});
+		}
+		else if ( monTri.equals("za"))
+		{
+			Collections.sort(mesVideo, new Comparator<Video>()
+				{
+					public int compare(Video first, Video second)
+					{
+						return second.getNom().compareToIgnoreCase(first.getNom());
+					}
+				});
+		}
+		else if (monTri.equals("pcroissant"))
+		{
+			Collections.sort(mesVideo, new Comparator<Video>()
+					{
+						public int compare(Video first, Video second)
+						{
+							return Float.compare(first.getPrix(),second.getPrix());
+						}
+					});
+		} 
+		else if (monTri.equals("pdecroissant"))
+		{
+			Collections.sort(mesVideo, new Comparator<Video>()
+					{
+						public int compare(Video first, Video second)
+						{
+							return Float.compare(second.getPrix(),first.getPrix());
+						}
+					});
+		}
 		
 		request.setAttribute("videos", mesVideo);
 		
