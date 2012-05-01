@@ -1,6 +1,7 @@
 package bean;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
@@ -17,7 +18,8 @@ public class LocVideoBean
 {
 	private static LocVideoBean instance;
 	public static final String DEFAULT_JNDI_NAME ="LocationVideoBean/remote";
-	ILocationVideoBean bean;
+	
+	private ILocationVideoBean bean;
 	
 	public LocVideoBean()
 	{
