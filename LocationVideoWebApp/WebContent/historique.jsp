@@ -23,14 +23,16 @@ if (Uti == null)
 List<Historique> mesVideoLouer ;
 mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
 
-Collections.sort(mesVideoLouer, new Comparator<Historique>()
+if (mesVideoLouer!= null && mesVideoLouer.size()>0)
+{
+	Collections.sort(mesVideoLouer, new Comparator<Historique>()
 		{
 			public int compare(Historique first, Historique second)
 			{
 				return second.getdateVisu().compareTo(first.getdateVisu());
 			}
 		});
-
+}
 %>
 </head>
 <body>
@@ -53,7 +55,7 @@ Collections.sort(mesVideoLouer, new Comparator<Historique>()
 <div id="conteneur">
 
 	<% 
-	if(mesVideoLouer != null)
+	if(mesVideoLouer != null && mesVideoLouer.size()>0)
 	{
 		%>
 		<table id="historique">
