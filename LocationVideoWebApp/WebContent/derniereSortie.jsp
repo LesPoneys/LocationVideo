@@ -14,7 +14,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>ACCEUIL</title>
+<title>Dernières Sorties</title>
  <link rel="stylesheet" media="screen" href="STYLE/CSS/styleConnected.css">
 <%
 Utilisateur Uti = (Utilisateur)session.getAttribute("uti") ;
@@ -32,16 +32,16 @@ if (Uti == null)
 	</div>
 
 <div id="titre">
-	<h1><img src="STYLE/images/icone-connexion.png" />Acceuil</h1>
+	<h1><img src="STYLE/images/icone-connexion.png" />Dernières Sorties</h1>
 </div>
 
 <div id="menu">
 	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
-	<p><a href="derniereSortie.html" >Dernières Sorties</a><br></p>
+	<p><a href="acceuil.html" >Acceuil</a><br></p>
 	<p><a href="historique.html" >Mon Historique</a><br></p>
 	
 	<p>Catégories :</p>
-	<form name="connexion" action="acceuil.html" method="post">
+	<form name="connexion" action="derniereSortie.html" method="post">
 
 	<select name="trie">
 	<option value="Toutes les catégories">Toutes les catégories</option>
@@ -80,10 +80,7 @@ if (Uti == null)
 
 <% 
 List<Video> mesVideo = (List<Video>)request.getAttribute("videos");
-if(request.getAttribute("location") != null)
-{
-	out.print("Confirmation de la réservation de " + request.getAttribute("location"));
-}
+
 if(mesVideo != null && mesVideo.size() > 0)
 {
 	%><table><%
@@ -112,7 +109,7 @@ if(mesVideo != null && mesVideo.size() > 0)
 }
 else
 {
-	out.print("Aucune vidéo trouvée");
+	out.print("Aucune nouveauté pour l'instant");
 }%>	
 
 </div>			

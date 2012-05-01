@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.AcceuilController;
 import controller.DeconnexionController;
+import controller.DerniereSortieController;
 import controller.DetailVideoController;
 import controller.HistoriqueController;
 import controller.IndexController;
@@ -78,6 +79,12 @@ public class ServletDispatcher extends HttpServlet {
 			LocationController location = new LocationController(request, response);
 			location.process();
 		}
+		else if(path.equals("/derniereSortie.html"))
+		{
+			DerniereSortieController derniereSortie = new DerniereSortieController(request, response);
+			derniereSortie.process();
+		}
+		
 	}
 
 	/**

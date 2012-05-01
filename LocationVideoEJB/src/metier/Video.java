@@ -21,6 +21,8 @@ public class Video implements Serializable
 	private Categorie categorie;
 	private Set<Support> supports;
 	private String image;
+	private Date dateAjout;
+	private float prix;
 
 	public Video()
 	{
@@ -87,6 +89,22 @@ public class Video implements Serializable
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Date getDateAjout() {
+		return dateAjout;
+	}
+
+	public void setDateAjout(Date dateAjout) {
+		this.dateAjout = dateAjout;
+	}
+
+	public float getPrix() {
+		return prix;
+	}
+
+	public void setPrix(float prix) {
+		this.prix = prix;
 	}
 	
 }

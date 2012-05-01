@@ -37,6 +37,7 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 <div id="menu">
 	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
 	<p><a href="acceuil.html" >Acceuil</a><br></p>
+	<p><a href="derniereSortie.html" >Dernières Sorties</a><br></p>
 	<p><a href="historique.html" >Mon Historique</a><br></p>
 	<p><a href="deconnexion.html" >Déconnexion</a><br></p>
 
@@ -48,7 +49,9 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 	<table><tr>
 			<td width = 152px><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
 			<td><label><% out.print(maVideo.getDescription());%><br><br>
-			Catégorie : <% out.print(maVideo.getCategorie().getNom());%><br>
+		
+			Catégorie : <% out.print(maVideo.getCategorie().getNom());%><br><br>
+			Prix : <% out.print(maVideo.getPrix());%> euros<br>
 			Supports : 
 			<select name="support">
 			<%	
