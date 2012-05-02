@@ -16,6 +16,7 @@ import controller.IndexController;
 import controller.ConnexionController;
 import controller.InscriptionController;
 import controller.LocationController;
+import controller.PaiementController;
 /**
  * Servlet implementation class ServletDisptcher
  */
@@ -83,6 +84,11 @@ public class ServletDispatcher extends HttpServlet {
 		{
 			DerniereSortieController derniereSortie = new DerniereSortieController(request, response);
 			derniereSortie.process();
+		}
+		else if(path.equals("/paiement.html"))
+		{
+			PaiementController paiement = new PaiementController(request, response);
+			paiement.process();
 		}
 		
 	}

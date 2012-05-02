@@ -27,35 +27,48 @@ public class LocationController extends Controller {
 
 	public void process() throws ServletException, IOException
 	{
-		HttpSession session = request.getSession();
-		Utilisateur Uti = (Utilisateur)session.getAttribute("uti") ;
-		if(Uti != null)
+		if (request.getParameter("numCarte")!=null && !request.getParameter("numCarte").isEmpty()
+				&& request.getParameter("cle")!=null && !request.getParameter("cle").isEmpty()
+				&& request.getParameter("nom")!=null && !request.getParameter("nom").isEmpty()
+				&& request.getParameter("date")!=null && !request.getParameter("date").isEmpty())
 		{
-			Location location = new Location();
-			location.setDateLocation(new Date());
-			
-			GregorianCalendar calendar = new java.util.GregorianCalendar(); 
-			calendar.setTime( new Date() ); 
-			calendar.add (Calendar.DATE, 14);
-			
-			location.setDateLimiteRetour(calendar.getTime());
-
-			
-			int idVideo = Integer.valueOf(request.getParameter("id"));
-			Video maVideo = LocVideoBean.getInstance().getVideo(idVideo);
-			
-			location.setVideo(maVideo);
-			location.setUtilisateur(Uti);
-			
-			LocVideoBean.getInstance().ajoutHistorique(location);
-			
-			request.setAttribute("location", maVideo.getNom());
-			
-			dispatch("acceuil.html");
+			HttpSession session = request.getSession();
+			Utilisateur Uti = (Utilisateur)session.getAttribute("uti") ;
+			if(Uti != null)
+			{
+				Location location = new Location();
+				location.setDateLocation(new Date());
+				
+				GregorianCalendar calendar = new java.util.GregorianCalendar(); 
+				calendar.setTime( new Date() ); 
+				calendar.add (Calendar.DATE, 14);
+				
+				location.setDateLimiteRetour(calendar.getTime());
+	
+				
+				int idVideo = Integer.parseInt(request.getParameter("id"));
+				Video maVideo = LocVideoBean.getInstance().getVideo(idVideo);
+				
+				location.setVideo(maVideo);
+				location.setUtilisateur(Uti);
+				
+				LocVideoBean.getInstance().ajoutHistorique(location);
+				
+				request.setAttribute("location", maVideo.getNom());
+				
+				dispatch("acceuil.html");
+			}
+			else
+			{
+				dispatch("acceuil.html");
+			}
 		}
 		else
 		{
-			dispatch("acceuil.html");
+			int idVideo = Integer.parseInt(request.getParameter("id"));
+			request.setAttribute("id", idVideo);
+			request.setAttribute("erreur","true");
+			dispatch("paiement.jsp");
 		}
 		
 	}

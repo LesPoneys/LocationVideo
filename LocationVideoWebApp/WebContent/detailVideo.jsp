@@ -45,7 +45,7 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 
 
 <div id="conteneur">
-	<form name="location" action="location.html?id=<%out.print(maVideo.getId()); %>" method="post">
+	<form name="location" action="paiement.html?id=<%out.print(maVideo.getId()); %>" method="post">
 	<table><tr>
 			<td width = 152px><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
 			<td><label><% out.print(maVideo.getDescription());%><br><br>
@@ -65,6 +65,7 @@ Video maVideo = LocVideoBean.getInstance().getVideo(Integer.parseInt(idVideo));
 					}
 				}	%>
 			</select>
+			<%request.setAttribute("TypeEntree", "Paiement"); %>
 			<input type="submit" name="Louer" value="Réserver"/>
 			</label></td>
 		</tr></table>
