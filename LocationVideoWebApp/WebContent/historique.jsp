@@ -4,9 +4,11 @@
 <%@ page import="bean.LocVideoBean"%>
 <%@ page import="java.util.List"%>
 <%@ page import="metier.Video"%>
-<%@ page import="metier.Historique"%>
+<%@ page import="metier.Location"%>
 <%@ page import="java.util.Collections"%>
 <%@ page import="java.util.Comparator"%>
+<%@ page import="java.text.DateFormat"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,8 +22,8 @@ if (Uti == null)
 	%> <jsp:forward page="/connexion.html" /> <%
 }
 
-List<Historique> mesVideoLouer ;
-mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
+List<Location> mesVideoLouer ;
+mesVideoLouer = LocVideoBean.getInstance().getLocations(Uti.getId());
 
 %>
 </head>
@@ -48,11 +50,11 @@ mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
 	<% 
 	if(mesVideoLouer != null && mesVideoLouer.size()>0)
 	{
-		Collections.sort(mesVideoLouer, new Comparator<Historique>()
+		Collections.sort(mesVideoLouer, new Comparator<Location>()
 				{
-					public int compare(Historique first, Historique second)
+					public int compare(Location first, Location second)
 					{
-						return second.getdateVisu().compareTo(first.getdateVisu());
+						return second.getDateLocation().compareTo(first.getDateLocation());
 					}
 				});
 		%>
@@ -60,18 +62,21 @@ mesVideoLouer = LocVideoBean.getInstance().getHistorique(Uti.getId());
 		<tr>
 			<th align="left"><label>Affiche</label></th>
 			<th align="left"><label>Film</label></th>
-			<th align="left"><label>Date</label></th>
+			<th align="left"><label>Date Location</label></th>
+			<th align="left"><label>Date Retour</label></th>
 		</tr>
 		<%
+		DateFormat formatDate = DateFormat.getDateInstance( DateFormat.MEDIUM ) ;
 		for(int i = 0; i < mesVideoLouer.size(); i++)
 		{
-			Historique maVideoLouer = mesVideoLouer.get(i);
+			Location maVideoLouer = mesVideoLouer.get(i);
 			Video maVideo = maVideoLouer.getVideo();
 			%>
 			<tr>
 			<td width = 77px><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><img src="<%out.print(maVideo.getImage()); %>" width=75px height=105px/></a></td>
 			<td><a href="detailVideo.html?id=<%out.print(maVideo.getId()); %>" ><label><%out.print(maVideo.getNom()); %></label></a></td>
-			<td><label><%out.print(maVideoLouer.getdateVisu()); %></label></td>
+			<td><label><%out.print(formatDate.format(maVideoLouer.getDateLocation())); %></label></td>
+			<td><label><%out.print(formatDate.format(maVideoLouer.getDateLimiteRetour())); %></label></td>
 		</tr>
 	   <%}
 		%></table><%

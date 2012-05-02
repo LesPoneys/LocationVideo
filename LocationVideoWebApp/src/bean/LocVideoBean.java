@@ -7,7 +7,7 @@ import javax.naming.NamingException;
 import javax.rmi.PortableRemoteObject;
 
 import metier.Categorie;
-import metier.Historique;
+import metier.Location;
 import metier.Support;
 import metier.Utilisateur;
 import metier.Video;
@@ -67,6 +67,11 @@ public class LocVideoBean
 		List<Video> vid = bean.getVideos();
 
 		return vid;
+	}
+	
+	public List<Video> getVideosByCategorie(int idCat)
+	{
+		return bean.getVideosByCategorie(idCat);
 	}
 	
 	public void supprimerCategorie(int id)
@@ -130,19 +135,14 @@ public class LocVideoBean
 		return bean.getVideo(id);
 	}
 	
-	public List<Historique> getHistorique(int id_uti)
+	public List<Location> getLocations(int id_uti)
 	{
-		return bean.getHistorique(id_uti);
-	}
-
-	public List<Video> getVideosByCategorie(int idCat)
-	{
-		return bean.getVideosByCategorie(idCat);
+		return bean.getLocations(id_uti);
 	}
 	
-	public Historique ajoutHistorique(Historique hist)
+	public Location ajoutHistorique(Location hist)
 	{
-		return bean.ajoutHistorique(hist);
+		return bean.ajoutLocation(hist);
 	}
 
 }

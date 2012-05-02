@@ -5,7 +5,7 @@ import java.util.List;
 import javax.ejb.Remote;
 
 import metier.Categorie;
-import metier.Historique;
+import metier.Location;
 import metier.Support;
 import metier.Utilisateur;
 import metier.Video;
@@ -17,7 +17,7 @@ public interface ILocationVideoBean
 	public void deleteVideo(int id);
 	public List<Video> getVideos();
 	public Video getVideo(int id);
-
+	public List<Video> getVideosByCategorie(int idCat);
 	
 	public Categorie ajoutCategorie(Categorie cat);
 	public void deleteCategorie(int id);
@@ -37,9 +37,7 @@ public interface ILocationVideoBean
 	public Utilisateur getUtilisateurbyLogin(String login);
 	public Utilisateur IdentificationUtilisateur(String login, String mdp);
 	
-	public Historique ajoutHistorique(Historique hist);
-	public List<Historique> getHistorique(int id_uti);
-	public List<Video> getVideosByCategorie(int idCat);
-	
-	
+	public Location ajoutLocation(Location hist);
+	public List<Location> getLocations(int id_uti);
+
 }
