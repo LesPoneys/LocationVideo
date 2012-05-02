@@ -71,3 +71,6 @@ margin-left: 2%; height: 40px; border: 3px solid #116699; -webkit-border-radius:
 #titre{ margin-left: 5%; margin-top :2% ; border: 1px solid black; background: white; width: 90%; -webkit-border-radius: 8px; -moz-border-radius: 8px; border-radius: 8px;}
 #titre h1{ margin: 0; margin-bottom: 10px; font-family: Consolas;}
 #titre img{ margin-bottom: -15px; padding-right: 5px; padding-left: 5px;}
+
+.gauche{ border-right : 1px solid white;}
+.image{text-align : center;}
