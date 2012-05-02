@@ -46,6 +46,10 @@ public class LocationController extends Controller {
 				{
 					ValiderLocation();
 				}
+				else
+				{
+					RedirectSiErreur();
+				}
 			}
 		}
 		else
