@@ -39,61 +39,70 @@ if (Uti == null)
 	<p>Bienvenue <% out.print(Uti.getLogin()+"<br>");%></p>
 	<p><a href="derniereSortie.html" >Dernières Sorties</a><br></p>
 	<p><a href="historique.html" >Mon Historique</a><br></p>
-	
-	<p>Catégories :</p>
-	<form name="connexion" action="acceuil.html" method="post">
-
-	<select name="catégorie">
-	<option value="Toutes les catégories">Toutes les catégories</option>
-	<%
-	List<Categorie> mesCat = (List<Categorie>)request.getAttribute("cats");
-	String maCat = (String)request.getAttribute("trie");
-	if(mesCat != null)
-	{
-		for(int i =0; i< mesCat.size(); i++)
-		{
-			Categorie cat = mesCat.get(i);
-			String NomCat =cat.getNom(); 
-			if(NomCat.equals(maCat))
-			{
-				%>	<option selected value="<%out.print(maCat); %>"><% out.print(maCat); %></option><%
-			}
-			else
-			{
-		%>	<option value="<%out.print(NomCat); %>"><% out.print(NomCat); %></option> <%
-			}	
-		}
-	}
-	%>
-	
-	</select> 
-	
-	<p>Trie :</p>
-	<form name="connexion" action="acceuil.html" method="post">
-
-	<select name="trie">
-		<option selected value="az">A-Z</option>
-		<option value="za">Z-A</option>
-		<option value="pcroissant">Prix croissant</option>
-		<option value="pdecroissant">Prix décroissant</option>
-	</select> 
-			 
-	<input type="submit" name="Valider" value="Valider"/>
-	
-	</form>
-	
 	<p><a href="deconnexion.html" >Déconnexion</a><br></p>
 </div>
 
 <div id="conteneur">
-<p><b>
 
 <% 
 List<Video> mesVideo = (List<Video>)request.getAttribute("videos");
 if(request.getAttribute("location") != null)
 {
-	out.print("Confirmation de la réservation de " + request.getAttribute("location"));
+	%><p><%out.print("Confirmation de la réservation de " + request.getAttribute("location"));%></p><%
 }
+%>
+<form name="connexion" action="acceuil.html" method="post">
+<label>Catégories : </label>
+<select name="catégorie">
+<option value="Toutes les catégories">Toutes les catégories</option>
+<%
+List<Categorie> mesCat = (List<Categorie>)request.getAttribute("cats");
+String maCat = (String)request.getAttribute("catégorie");
+if(mesCat != null)
+{
+	for(int i =0; i< mesCat.size(); i++)
+	{
+		Categorie cat = mesCat.get(i);
+		String NomCat =cat.getNom(); 
+		if(NomCat.equals(maCat))
+		{
+			%>	<option selected value="<%out.print(maCat); %>"><% out.print(maCat); %></option><%
+		}
+		else
+		{
+	%>	<option value="<%out.print(NomCat); %>"><% out.print(NomCat); %></option> <%
+		}	
+	}
+}
+%>
+</select> 
+<label>Trie : </label>
+
+<select name="trie">
+	<%
+	String monTrie = (String)request.getAttribute("trie");
+	if(monTrie.equals("az")){%>
+	 <option selected value="az">A-Z</option><%}
+	else{%>
+	 <option value="az">A-Z</option><%}
+	if(monTrie.equals("za")){%>
+	 <option selected value="za">Z-A</option><%}
+	else{%>
+	 <option value="za">Z-A</option><%}
+	if(monTrie.equals("pcroissant")){%>
+	 <option selected value="pcroissant">Prix croissant</option><%}
+	else{%>
+	 <option value="pcroissant">Prix croissant</option><%}
+	if(monTrie.equals("pdecroissant")){%>
+	 <option selected value="pdecroissant">Prix décroissant</option><%}
+	else{%>
+	 <option value="pdecroissant">Prix décroissant</option><%}%>
+</select> 
+		 
+<input type="submit" name="Valider" value="Afficher"/>
+
+</form>
+<%
 if(mesVideo != null && mesVideo.size() > 0)
 {
 	%><table><%
@@ -125,7 +134,7 @@ if(mesVideo != null && mesVideo.size() > 0)
 }
 else
 {
-	out.print("Aucune vidéo trouvée");
+	%><p><%out.print("Aucune vidéo trouvée");%></p><%
 }%>	
 
 </div>			
