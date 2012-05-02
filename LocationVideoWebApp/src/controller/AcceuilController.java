@@ -65,7 +65,10 @@ public class AcceuilController extends Controller {
 		
 		//System.out.print("video : " + mesVideo);
 		String monTri = request.getParameter("trie");
-		if (monTri == null || monTri.equals("az"))
+		if(monTri == null)
+			monTri = "az";
+		
+		if ( monTri.equals("az"))
 		{
 			Collections.sort(mesVideo, new Comparator<Video>()
 				{
@@ -105,7 +108,7 @@ public class AcceuilController extends Controller {
 						}
 					});
 		}
-		
+		request.setAttribute("trie", monTri);
 		request.setAttribute("videos", mesVideo);
 		
 		dispatch("acceuil.jsp");
