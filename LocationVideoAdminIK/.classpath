@@ -4,6 +4,6 @@
 	<classpathentry kind="src" path="resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/LocationVideoEJB"/>
-	<classpathentry kind="lib" path="D:/Programme/jboss-5.1.0.GA-jdk6/jboss-5.1.0.GA/client/jbossall-client.jar"/>
+	<classpathentry kind="lib" path="D:/Logiciel/jboss-5.1.0.GA/client/jbossall-client.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -29,7 +29,7 @@ if (Uti == null)
 <div id="header">
 		<h1><% out.print("Poney Vidéos");%></h1>
 		<h2><% out.print("Les vidéos qui envoient du poneys");%></h2>
-	</div>
+</div>
 
 <div id="titre">
 	<h1><img src="STYLE/images/icone-connexion.png" />Acceuil</h1>
@@ -49,6 +49,10 @@ List<Video> mesVideo = (List<Video>)request.getAttribute("videos");
 if(request.getAttribute("location") != null)
 {
 	%><p><%out.print("Confirmation de la réservation de " + request.getAttribute("location"));%></p><%
+	if(request.getAttribute("reglement") != null)
+	{
+		%><p><%out.print(request.getAttribute("reglement"));%></p><%
+	}
 }
 %>
 <form name="connexion" action="acceuil.html" method="post">

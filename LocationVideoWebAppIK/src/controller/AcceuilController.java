@@ -110,10 +110,12 @@ public class AcceuilController extends Controller {
 		}
 		request.setAttribute("trie", monTri);
 		request.setAttribute("videos", mesVideo);
-		String ValidationPaiement = request.getParameter("location");
-		if (ValidationPaiement!=null && !ValidationPaiement.isEmpty())
-			request.setAttribute("location", "true");
+
+		//if (request.getParameter("reglement")!=null && request.getParameter("location") != null)
+		//	request.setAttribute("message", request.getParameter("reglement") + request.getParameter("location") );
 		
+		
+		//System.out.println("------" +  request.getParameter("reglement"));
 		dispatch("acceuil.jsp");
 	}
 
