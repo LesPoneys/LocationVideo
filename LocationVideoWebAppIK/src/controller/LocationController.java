@@ -61,6 +61,10 @@ public class LocationController extends Controller {
 					Reglement otherReglement = anotherInjector.getInstance(Reglement.class);
 					ValiderLocation(otherReglement);
 				}
+				else
+				{
+					RedirectSiErreur();
+				}
 			}
 		}
 		else

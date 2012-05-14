@@ -51,38 +51,35 @@ String monSupport = request.getParameter("support");
 			<tr><label ><%if (request.getAttribute("erreur")=="true") 
 				out.print("Donnée de paiement manquante ");%></label></tr>
 					<tr><td></td><tr>
-			<td width = 152px><img src="<%out.print(maVideo.getImage()); %>" width=150px height=210px/></td>
+			<td width = 75px><img src="<%out.print(maVideo.getImage()); %>" width=75px height=105px/></td>
 			<td><label><% out.print(maVideo.getNom());%><br><br>
 		
 			Supports : <% out.print(monSupport);%><br><br>
 			
-			Prix : <% out.print(maVideo.getPrix());%><br><br>
+			Prix : <% out.print(maVideo.getPrix());%>euros<br><br>
 
 			</label></td>
 		</tr>
 	</table>
-	
 
-	
-	<table>
+	<table id="paiement">
 		<tr>
-			<td class="gauche" width = 50%>
+			<td class="gauche">
 				<form name="paiementCB" action="location.html?id=<% out.print(maVideo.getId());%>" method="post">
 				<input type="hidden" name="type" value="CB" />
 				<table>
-					<tr><td align="center"><img src="STYLE/images/visacb.jpg" width=70px/></td></tr>
+					<tr><td align="center"><img src="STYLE/images/visacb.jpg" height=70px/></td></tr>
 					<tr><td class="cle"><label for="nom"><% out.print("Nom propriétaire de la carte :");%> </label></td></tr>
 					<tr><td><input type="text" id="nom" name="nom" /></td></tr>
 					
 					<tr><td><label for="numCarte"><% out.print("N° de carte bancaire :");%> </label></td></tr>
 					<tr><td><input type="text" id="numCarte" name="numCarte" /></td></tr>
-		
-					<tr><td class="cle"><label for="cle"><% out.print("Clé :");%> </label></td></tr>
-					<tr><td><input type="text" id="cle" name="cle" /></td></tr>
 							
-					
 					<tr><td class="cle"><label for="date"><% out.print("Date d'expiration :");%> </label></td></tr>
 					<tr><td><input type="text" id="date" name="date" /></td></tr>
+					
+					<tr><td class="cle"><label for="cle"><% out.print("Clé :");%> </label></td></tr>
+					<tr><td><input type="text" id="cle" name="cle" /></td></tr>
 					
 					<tr align="center"><td class="label"><input type="submit" name="Valider" value="Valider" /></td></tr>
 				</table>
@@ -92,10 +89,10 @@ String monSupport = request.getParameter("support");
 				<form name="paiementCC" action="location.html?id=<% out.print(maVideo.getId());%>" method="post">
 				<input type="hidden" name="type" value="CC" />
 				<table>
-					<tr><td align="center"><img src="STYLE/images/poney-card.png" width=70px/><td></tr>
+					<tr><td align="center"><img src="STYLE/images/poney-card.png" height=70px/><td></tr>
 			
 					<tr><td><label for="numCarteC"><% out.print("N° de carte :");%> </label></td></tr>
-					<tr><td  width =200><input type="text" id="numCarteC" name="numCarteC" /></td></tr>
+					<tr><td><input type="text" id="numCarteC" name="numCarteC" /></td></tr>
 		
 					<tr><td class="label"><label for="mdp"><% out.print("Mot de passe :");%> </label></td></tr>
 					<tr><td><input type="password" id="mdp" name="mdp" /></td></tr>
@@ -103,18 +100,10 @@ String monSupport = request.getParameter("support");
 									
 					<tr align="center"><td class="label"><input type="submit" name="Valider" value="Valider" /></td></tr>
 				</table>
-			</form>
-				
+				</form>	
 			</td>
 		</tr>
-	
-		
 	</table>
-	
-	
-
-	
-
 </div>
 </body>
 </html>
